@@ -1,0 +1,325 @@
+.hero-background {
+  position: relative;
+  height: 500px;
+  margin-bottom: 5rem;
+  transition: background-color 1s ease;
+}
+
+.hero-section {
+  position: relative;
+  height: 535px;
+  left: 12rem;
+  overflow: hidden;
+  width: 1400px;
+}
+
+.hero-image {
+  transition: opacity 0.5s ease-in-out;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-image.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hero-image:not(.active) {
+  opacity: 0;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 49rem;
+  height: 7%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  backdrop-filter: blur(15px);
+}
+
+.hero-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: -1;
+}
+
+.hero-overlay p {
+  color: #000000;
+  text-align: center;
+  z-index: 3;
+  padding: 0 20px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 15px;
+  position: relative;
+}
+
+.dots-container {
+  position: absolute;
+  top: 82%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.dot.active {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.dot:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  color: #000;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.arrow:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.arrow.visible {
+  opacity: 1;
+}
+
+.arrow.left {
+  left: 5rem;
+}
+
+.arrow.right {
+  right: 5rem;
+}
+
+.hero-section:hover .arrow {
+  opacity: 1;
+}
+
+/* Tablet Landscape - Large tablets and small desktops */
+@media screen and (min-width: 1201px) and (max-width: 1600px) {
+  .hero-section {
+    width: 1200px;
+    height: 480px;
+    left: 8rem;
+  }
+  .hero-background {
+    height: 450px;
+  }
+  .hero-overlay {
+    top: 47rem;
+    height: 10%;
+  }
+  .arrow.left {
+    left: 3rem;
+  }
+  .arrow.right {
+    right: 3rem;
+  }
+}
+
+/* Tablet and Medium Screens */
+@media screen and (min-width: 751px) and (max-width: 1200px) {
+.hero-section {
+    width: 100%;
+    height: 270px;
+    left: 0;
+    right: 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+  .hero-background {
+    height: 270px;
+    margin-bottom: 3rem;
+  }
+  .hero-overlay {
+    top: 34rem;
+    height: 10%;
+  }
+  .hero-overlay p {
+    font-size: 14px;
+  }
+  .arrow.left {
+    left: 1rem;
+  }
+  .arrow.right {
+    right: 1rem;
+  }
+  .arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+}
+
+/* Mobile Landscape and Small Tablets */
+@media screen and (min-width: 481px) and (max-width: 750px) {
+  .hero-section {
+    height: 250px;
+    left: 1rem;
+    right: 1rem;
+    width: calc(100% - 2rem);
+  }
+  .hero-background {
+    height: 250px;
+    margin-bottom: 2rem;
+  }
+  .hero-overlay {
+    top: 31rem;
+    height: 8%;
+  }
+  .hero-overlay p {
+    font-size: 13px;
+    padding: 0 15px;
+  }
+  .dots-container {
+    top: 85%;
+    gap: 6px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+  .arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+  .arrow.left {
+    left: 0.5rem;
+  }
+  .arrow.right {
+    right: 0.5rem;
+  }
+}
+
+/* Mobile Portrait */
+@media screen and (max-width: 480px) {
+  .hero-section {
+    height: 170px;
+    left: 0rem;
+    right: 0rem;
+    width: calc(100% - 1rem);
+  }
+  .hero-background {
+    height: 170px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-overlay {
+    height: 7%;
+    top: 25.5rem;
+  }
+  .hero-overlay p {
+    font-size: 12px;
+    padding: 0 10px;
+    font-weight: 600;
+  }
+  .dots-container {
+    top: 88%;
+    gap: 5px;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+  .arrow {
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+    padding: 5px;
+  }
+  .arrow.left {
+    left: 0.25rem;
+  }
+  .arrow.right {
+    right: 0.25rem;
+  }
+}
+
+/* Extra Small Mobile */
+@media screen and (max-width: 360px) {
+  .hero-section {
+    height: 130px;
+    left: 0.25rem;
+    right: 0.25rem;
+    width: calc(100% - 0.5rem);
+  }
+  .hero-background {
+    height: 130px;
+    margin-bottom: 1rem;
+  }
+  .hero-overlay {
+    top: 23rem;
+    height: 8%;
+  }
+  .hero-overlay p {
+    font-size: 11px;
+    padding: 0 8px;
+  }
+  .dots-container {
+    gap: 4px;
+  }
+  .dot {
+    width: 5px;
+    height: 5px;
+  }
+  .arrow {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+}
