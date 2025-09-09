@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { logo } from "../../assets";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -32,7 +33,7 @@ const Header = () => {
 
             {/* Logo */}
             <div className="col-lg-2 col-md-3 col-sm-6 col-6 d-flex align-items-center">
-              <div className="d-flex align-items-center">
+              {/* <div className="d-flex align-items-center">
                 <div className="position-relative">
                   <div
                     className="bg-warning rounded p-2 me-2"
@@ -62,6 +63,9 @@ const Header = () => {
                   </div>
                   <div className="text-primary fw-bold small">.COM</div>
                 </div>
+              </div> */}
+              <div className="h-50">
+                <img src={logo} alt="" />
               </div>
             </div>
 
