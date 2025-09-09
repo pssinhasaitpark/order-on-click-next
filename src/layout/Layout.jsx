@@ -4,6 +4,7 @@ import HeaderFirst from "../components/Header/index.jsx";
 import { Container } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 import { Footer } from "../components/index.js";
+import ScrollingGifBanner from "../components/ScrollingGifBanner/ScrollingGifBanner.jsx";
 // import SubHeader from "../components/subHeader";
 
 export default function Layout() {
@@ -11,10 +12,11 @@ export default function Layout() {
     <>
       <HeaderFirst />
       {/* <SubHeader /> */}
-      <Container className="my-4">
-        <Outlet /> {/* Here router will render the child route */}
+      <Container>
+        <Outlet />
       </Container>
-      <Footer/>
+      <ScrollingGifBanner />
+      <Footer />
     </>
   );
 }

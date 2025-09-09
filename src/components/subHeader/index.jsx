@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
 const SubHeader = () => {
   const navItems = [
-    'Home',
-    'Flash Sale',
-    'Videos',
-    'Best Selling',
-    'All Categories',
-    'All Sellers',
-    'Terms & Condition'
+    "Home",
+    "Flash Sale",
+    "Videos",
+    "Best Selling",
+    "All Categories",
+    "All Sellers",
+    "Terms & Condition",
   ];
 
   return (
@@ -36,16 +36,16 @@ const SubHeader = () => {
                   href="#"
                   className="nav-link text-muted px-3 py-2"
                   style={{
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    textDecoration: 'none',
-                    transition: 'color 0.3s ease'
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    textDecoration: "none",
+                    transition: "color 0.3s ease",
                   }}
                   onMouseEnter={(e) => {
-                    e.target.style.color = '#6c757d';
+                    e.target.style.color = "#6c757d";
                   }}
                   onMouseLeave={(e) => {
-                    e.target.style.color = '#6c757d';
+                    e.target.style.color = "#6c757d";
                   }}
                 >
                   {item}

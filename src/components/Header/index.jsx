@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { logo } from "../../assets";
-
+import { Link } from "react-router-dom";
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false); // single toggle for both
@@ -88,12 +88,21 @@ const Header = () => {
             {/* Right Menu (Desktop only) */}
             <div className="col-lg-4 col-md-4 col-sm-6 col-6 d-none d-md-flex justify-content-end align-items-center flex-wrap gap-3">
               <div className="d-flex align-items-center text-dark">
-                <i className="fas fa-box me-1"></i>
-                <span className="small">My Orders</span>
+                <Link
+                  to="/order"
+                  className="text-dark text-decoration-none d-flex align-items-center"
+                >
+                  <i className="fas fa-box me-1"></i>
+                  <span className="small">My Orders</span>
+                </Link>
               </div>
               <div className="d-flex align-items-center text-dark position-relative">
-                <i className="fas fa-warehouse me-1"></i>
-                <span className="small">Wholesale</span>
+                <Link
+                  to="/login"
+                  className="text-dark text-decoration-none d-flex align-items-center"
+                >
+                  <i className="fas fa-warehouse me-2"></i> Wholesale
+                </Link>
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
                   1
                 </span>
@@ -134,14 +143,26 @@ const Header = () => {
               {/* Menu */}
               <div className="d-flex flex-column gap-3 mb-3">
                 <div className="d-flex align-items-center">
-                  <i className="fas fa-box me-2"></i> My Orders
+                  <Link
+                    to="/order"
+                    className="text-dark text-decoration-none d-flex align-items-center"
+                  >
+                    <i className="fas fa-box me-2"></i> My Orders
+                  </Link>
                 </div>
+
                 <div className="d-flex align-items-center position-relative">
-                  <i className="fas fa-warehouse me-2"></i> Wholesale
+                  <Link
+                    to="/login"
+                    className="text-dark text-decoration-none d-flex align-items-center"
+                  >
+                    <i className="fas fa-warehouse me-2"></i> Wholesale
+                  </Link>
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
                     1
                   </span>
                 </div>
+
                 <div className="d-flex align-items-center position-relative">
                   <i className="fas fa-shopping-cart me-2"></i> Cart
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
