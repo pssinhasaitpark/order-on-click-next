@@ -1,0 +1,537 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Designer Lehenga Set",
+      "category": "Fashion",
+      "subcategory": "Women's Wear",
+      "price": 2500,
+      "originalPrice": 3500,
+      "discount": 28,
+      "rating": 4.5,
+      "reviews": 156,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400",
+        "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400"
+      ],
+      "description": "Beautiful designer lehenga set perfect for weddings and festivals",
+      "features": ["Premium fabric", "Hand embroidered", "Dry clean only"],
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["Red", "Blue", "Pink", "Gold"],
+      "brand": "Ethnic Elegance",
+      "isRentable": true,
+      "rentPrice": 150,
+      "tags": ["wedding", "festival", "traditional", "designer"]
+    },
+    {
+      "id": 2,
+      "name": "Wireless Bluetooth Headphones",
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "price": 1499,
+      "originalPrice": 2499,
+      "discount": 40,
+      "rating": 4.3,
+      "reviews": 432,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",
+        "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400"
+      ],
+      "description": "High-quality wireless headphones with noise cancellation",
+      "features": ["Bluetooth 5.0", "30-hour battery", "Noise cancellation", "Quick charge"],
+      "colors": ["Black", "White", "Blue"],
+      "brand": "SoundMax",
+      "isRentable": false,
+      "tags": ["wireless", "bluetooth", "music", "audio"]
+    },
+    {
+      "id": 3,
+      "name": "Ganesh Murti - Brass",
+      "category": "Pooja Items",
+      "subcategory": "Murtis",
+      "price": 850,
+      "originalPrice": 1200,
+      "discount": 29,
+      "rating": 4.8,
+      "reviews": 89,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
+        "https://images.unsplash.com/photo-1599582909646-79b7c5c4cfe1?w=400"
+      ],
+      "description": "Handcrafted brass Ganesh murti for home temple",
+      "features": ["Pure brass", "Handcrafted", "Traditional design", "Perfect for worship"],
+      "sizes": ["Small", "Medium", "Large"],
+      "brand": "Divine Crafts",
+      "isRentable": false,
+      "tags": ["ganesh", "brass", "murti", "pooja", "religious"]
+    },
+    {
+      "id": 4,
+      "name": "Kids Educational Tablet",
+      "category": "Toys & Games",
+      "subcategory": "Educational",
+      "price": 3999,
+      "originalPrice": 5999,
+      "discount": 33,
+      "rating": 4.2,
+      "reviews": 267,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400",
+        "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400"
+      ],
+      "description": "Interactive learning tablet for children aged 3-12",
+      "features": ["HD display", "Educational apps", "Parental control", "Durable design"],
+      "colors": ["Blue", "Pink", "Green"],
+      "brand": "EduTech",
+      "isRentable": true,
+      "rentPrice": 200,
+      "tags": ["kids", "educational", "tablet", "learning", "children"]
+    },
+    {
+      "id": 5,
+      "name": "Men's Casual Shirt",
+      "category": "Fashion",
+      "subcategory": "Men's Wear",
+      "price": 899,
+      "originalPrice": 1499,
+      "discount": 40,
+      "rating": 4.1,
+      "reviews": 324,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400",
+        "https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=400"
+      ],
+      "description": "Comfortable cotton casual shirt for everyday wear",
+      "features": ["100% cotton", "Machine washable", "Slim fit", "Breathable fabric"],
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["White", "Blue", "Black", "Grey"],
+      "brand": "StyleCraft",
+      "isRentable": false,
+      "tags": ["casual", "shirt", "cotton", "men", "formal"]
+    },
+    {
+      "id": 6,
+      "name": "Premium Face Cream Set",
+      "category": "Beauty & Care",
+      "subcategory": "Skincare",
+      "price": 1299,
+      "originalPrice": 1899,
+      "discount": 32,
+      "rating": 4.6,
+      "reviews": 198,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+        "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400"
+      ],
+      "description": "Complete skincare set with day and night cream",
+      "features": ["Natural ingredients", "Anti-aging", "Moisturizing", "Dermatologist tested"],
+      "brand": "GlowSkin",
+      "isRentable": false,
+      "tags": ["skincare", "cream", "beauty", "anti-aging", "moisturizer"]
+    },
+    {
+      "id": 7,
+      "name": "Artificial Jewelry Set",
+      "category": "Jewelry",
+      "subcategory": "Artificial",
+      "price": 649,
+      "originalPrice": 999,
+      "discount": 35,
+      "rating": 4.4,
+      "reviews": 112,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400",
+        "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400"
+      ],
+      "description": "Elegant artificial jewelry set with necklace and earrings",
+      "features": ["Gold plated", "Hypoallergenic", "Lightweight", "Tarnish resistant"],
+      "colors": ["Gold", "Silver", "Rose Gold"],
+      "brand": "Glamour Collection",
+      "isRentable": true,
+      "rentPrice": 75,
+      "tags": ["jewelry", "artificial", "necklace", "earrings", "fashion"]
+    },
+    {
+      "id": 8,
+      "name": "LED Desk Lamp",
+      "category": "Decoration",
+      "subcategory": "Lighting",
+      "price": 1199,
+      "originalPrice": 1699,
+      "discount": 29,
+      "rating": 4.3,
+      "reviews": 87,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
+        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400"
+      ],
+      "description": "Modern LED desk lamp with adjustable brightness",
+      "features": ["LED technology", "Adjustable brightness", "USB charging port", "Touch control"],
+      "colors": ["White", "Black", "Silver"],
+      "brand": "LightCraft",
+      "isRentable": false,
+      "tags": ["lamp", "led", "desk", "lighting", "modern"]
+    },
+    {
+      "id": 9,
+      "name": "Smartphone 128GB",
+      "category": "Electronics",
+      "subcategory": "Mobile",
+      "price": 15999,
+      "originalPrice": 19999,
+      "discount": 20,
+      "rating": 4.5,
+      "reviews": 543,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400",
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400"
+      ],
+      "description": "Latest smartphone with advanced features and great camera",
+      "features": ["128GB storage", "48MP camera", "Fast charging", "6.5 inch display"],
+      "colors": ["Black", "Blue", "White", "Green"],
+      "brand": "TechPro",
+      "isRentable": true,
+      "rentPrice": 500,
+      "tags": ["smartphone", "mobile", "camera", "android", "technology"]
+    },
+    {
+      "id": 10,
+      "name": "Feng Shui Lucky Bamboo",
+      "category": "Gifts",
+      "subcategory": "Vastu",
+      "price": 299,
+      "originalPrice": 499,
+      "discount": 40,
+      "rating": 4.7,
+      "reviews": 78,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400",
+        "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400"
+      ],
+      "description": "Lucky bamboo plant for good fortune and positive energy",
+      "features": ["Easy to maintain", "Brings good luck", "Air purifying", "Decorative pot included"],
+      "sizes": ["Small", "Medium"],
+      "brand": "GreenLife",
+      "isRentable": false,
+      "tags": ["bamboo", "plant", "feng shui", "luck", "vastu", "gift"]
+    },
+    {
+      "id": 11,
+      "name": "Leather Wallet",
+      "category": "Fashion Accessories",
+      "subcategory": "Wallets",
+      "price": 799,
+      "originalPrice": 1299,
+      "discount": 38,
+      "rating": 4.2,
+      "reviews": 156,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400",
+        "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400"
+      ],
+      "description": "Premium leather wallet with multiple card slots",
+      "features": ["Genuine leather", "RFID blocking", "Multiple compartments", "Slim design"],
+      "colors": ["Black", "Brown", "Tan"],
+      "brand": "LeatherCraft",
+      "isRentable": false,
+      "tags": ["wallet", "leather", "accessory", "men", "premium"]
+    },
+    {
+      "id": 12,
+      "name": "Party Decoration Kit",
+      "category": "Decoration",
+      "subcategory": "Party Supplies",
+      "price": 599,
+      "originalPrice": 899,
+      "discount": 33,
+      "rating": 4.4,
+      "reviews": 89,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400"
+      ],
+      "description": "Complete party decoration kit for birthdays and celebrations",
+      "features": ["Balloons included", "Banners and streamers", "Table decorations", "Easy setup"],
+      "colors": ["Multi-color", "Pink", "Blue", "Gold"],
+      "brand": "Party Perfect",
+      "isRentable": true,
+      "rentPrice": 100,
+      "tags": ["party", "decoration", "birthday", "celebration", "balloons"]
+    },
+    {
+      "id": 13,
+      "name": "Yoga Mat Premium",
+      "category": "Sports & Fitness",
+      "subcategory": "Yoga",
+      "price": 899,
+      "originalPrice": 1299,
+      "discount": 31,
+      "rating": 4.6,
+      "reviews": 234,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400",
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400"
+      ],
+      "description": "Non-slip premium yoga mat for all types of yoga practice",
+      "features": ["Non-slip surface", "Eco-friendly material", "Extra thick", "Lightweight"],
+      "colors": ["Purple", "Blue", "Pink", "Green"],
+      "brand": "YogaLife",
+      "isRentable": false,
+      "tags": ["yoga", "mat", "fitness", "exercise", "meditation"]
+    },
+    {
+      "id": 14,
+      "name": "Kitchen Spice Organizer",
+      "category": "Home & Kitchen",
+      "subcategory": "Organization",
+      "price": 1199,
+      "originalPrice": 1699,
+      "discount": 29,
+      "rating": 4.3,
+      "reviews": 145,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400",
+        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400"
+      ],
+      "description": "Rotating spice organizer with 16 glass containers",
+      "features": ["16 glass jars", "Rotating design", "Space saving", "Airtight containers"],
+      "brand": "KitchenPro",
+      "isRentable": false,
+      "tags": ["kitchen", "spice", "organizer", "storage", "cooking"]
+    },
+    {
+      "id": 15,
+      "name": "Bluetooth Speaker Portable",
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "price": 1899,
+      "originalPrice": 2699,
+      "discount": 30,
+      "rating": 4.4,
+      "reviews": 298,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400",
+        "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=400"
+      ],
+      "description": "Waterproof portable Bluetooth speaker with rich bass",
+      "features": ["Waterproof", "12-hour battery", "Rich bass", "Wireless connectivity"],
+      "colors": ["Black", "Blue", "Red", "Green"],
+      "brand": "SoundWave",
+      "isRentable": true,
+      "rentPrice": 150,
+      "tags": ["speaker", "bluetooth", "portable", "waterproof", "music"]
+    },
+    {
+      "id": 16,
+      "name": "Women's Handbag",
+      "category": "Fashion Accessories",
+      "subcategory": "Bags",
+      "price": 1599,
+      "originalPrice": 2299,
+      "discount": 30,
+      "rating": 4.5,
+      "reviews": 187,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400",
+        "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400"
+      ],
+      "description": "Stylish women's handbag perfect for daily use",
+      "features": ["Premium material", "Multiple compartments", "Adjustable strap", "Spacious interior"],
+      "colors": ["Black", "Brown", "Beige", "Red"],
+      "brand": "Fashion Forward",
+      "isRentable": false,
+      "tags": ["handbag", "women", "fashion", "accessory", "bag"]
+    },
+    {
+      "id": 17,
+      "name": "Gaming Mouse RGB",
+      "category": "Electronics",
+      "subcategory": "Computer Accessories",
+      "price": 1299,
+      "originalPrice": 1899,
+      "discount": 32,
+      "rating": 4.6,
+      "reviews": 167,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",
+        "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400"
+      ],
+      "description": "High-precision gaming mouse with RGB lighting",
+      "features": ["RGB lighting", "High DPI", "Programmable buttons", "Ergonomic design"],
+      "colors": ["Black", "White"],
+      "brand": "GameTech",
+      "isRentable": false,
+      "tags": ["gaming", "mouse", "rgb", "computer", "gaming accessories"]
+    },
+    {
+      "id": 18,
+      "name": "Aromatherapy Diffuser",
+      "category": "Home & Wellness",
+      "subcategory": "Aromatherapy",
+      "price": 999,
+      "originalPrice": 1499,
+      "discount": 33,
+      "rating": 4.7,
+      "reviews": 123,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400",
+        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400"
+      ],
+      "description": "Ultrasonic aromatherapy diffuser with color-changing LED",
+      "features": ["Ultrasonic technology", "Color-changing LED", "Auto shut-off", "Whisper quiet"],
+      "colors": ["White", "Wood Grain"],
+      "brand": "Zen Living",
+      "isRentable": false,
+      "tags": ["diffuser", "aromatherapy", "wellness", "relaxation", "essential oils"]
+    },
+    {
+      "id": 19,
+      "name": "Kids Building Blocks Set",
+      "category": "Toys & Games",
+      "subcategory": "Building Toys",
+      "price": 799,
+      "originalPrice": 1199,
+      "discount": 33,
+      "rating": 4.8,
+      "reviews": 156,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=400",
+        "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=400"
+      ],
+      "description": "Educational building blocks set for creative learning",
+      "features": ["Non-toxic material", "Educational", "Creative play", "Age appropriate"],
+      "colors": ["Multi-color"],
+      "brand": "PlayLearn",
+      "isRentable": true,
+      "rentPrice": 100,
+      "tags": ["toys", "kids", "building blocks", "educational", "creative"]
+    },
+    {
+      "id": 20,
+      "name": "Stainless Steel Water Bottle",
+      "category": "Sports & Fitness",
+      "subcategory": "Bottles",
+      "price": 599,
+      "originalPrice": 899,
+      "discount": 33,
+      "rating": 4.4,
+      "reviews": 201,
+      "inStock": true,
+      "images": [
+        "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400",
+        "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400"
+      ],
+      "description": "Insulated stainless steel water bottle keeps drinks cold/hot",
+      "features": ["Double wall insulation", "BPA free", "Leak proof", "24-hour temperature retention"],
+      "colors": ["Silver", "Black", "Blue", "Pink"],
+      "brand": "HydroLife",
+      "isRentable": false,
+      "tags": ["water bottle", "stainless steel", "insulated", "sports", "fitness"]
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Fashion",
+      "subcategories": ["Women's Wear", "Men's Wear", "Kids Wear", "Ethnic Wear"]
+    },
+    {
+      "id": 2,
+      "name": "Electronics",
+      "subcategories": ["Mobile", "Audio", "Computer Accessories", "Gadgets"]
+    },
+    {
+      "id": 3,
+      "name": "Pooja Items",
+      "subcategories": ["Murtis", "Incense", "Decorative Items", "Religious Books"]
+    },
+    {
+      "id": 4,
+      "name": "Toys & Games",
+      "subcategories": ["Educational", "Building Toys", "Action Figures", "Board Games"]
+    },
+    {
+      "id": 5,
+      "name": "Beauty & Care",
+      "subcategories": ["Skincare", "Haircare", "Makeup", "Personal Care"]
+    },
+    {
+      "id": 6,
+      "name": "Jewelry",
+      "subcategories": ["Artificial", "Silver", "Gold Plated", "Fashion Jewelry"]
+    },
+    {
+      "id": 7,
+      "name": "Decoration",
+      "subcategories": ["Lighting", "Wall Art", "Party Supplies", "Home Decor"]
+    },
+    {
+      "id": 8,
+      "name": "Fashion Accessories",
+      "subcategories": ["Bags", "Wallets", "Belts", "Watches"]
+    },
+    {
+      "id": 9,
+      "name": "Gifts",
+      "subcategories": ["Vastu", "Feng Shui", "Decorative", "Special Occasions"]
+    },
+    {
+      "id": 10,
+      "name": "Sports & Fitness",
+      "subcategories": ["Yoga", "Exercise Equipment", "Sports Accessories", "Bottles"]
+    }
+  ],
+  "brands": [
+    "Ethnic Elegance",
+    "SoundMax",
+    "Divine Crafts",
+    "EduTech",
+    "StyleCraft",
+    "GlowSkin",
+    "Glamour Collection",
+    "LightCraft",
+    "TechPro",
+    "GreenLife",
+    "LeatherCraft",
+    "Party Perfect",
+    "YogaLife",
+    "KitchenPro",
+    "SoundWave",
+    "Fashion Forward",
+    "GameTech",
+    "Zen Living",
+    "PlayLearn",
+    "HydroLife"
+  ],
+  "filters": {
+    "priceRanges": [
+      {"min": 0, "max": 500, "label": "Under ₹500"},
+      {"min": 500, "max": 1000, "label": "₹500 - ₹1000"},
+      {"min": 1000, "max": 2000, "label": "₹1000 - ₹2000"},
+      {"min": 2000, "max": 5000, "label": "₹2000 - ₹5000"},
+      {"min": 5000, "max": 999999, "label": "Above ₹5000"}
+    ],
+    "ratings": [4.5, 4.0, 3.5, 3.0],
+    "availability": ["In Stock", "Out of Stock"],
+    "rentable": ["Available for Rent", "Purchase Only"]
+  }
+}
