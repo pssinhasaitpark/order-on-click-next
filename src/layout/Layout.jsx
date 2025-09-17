@@ -11,9 +11,9 @@ export default function Layout() {
     <>
       <HeaderFirst />
       {/* <SubHeader /> */}
-      <Container className="my-4">
+      <div className="my-4">
         <Outlet /> {/* Here router will render the child route */}
-      </Container>
+      </div>
       <Footer/>
     </>
   );

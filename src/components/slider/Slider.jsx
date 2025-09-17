@@ -1,183 +1,263 @@
-import React, { useMemo } from "react";
-import { Container, Row, Card, Button } from "react-bootstrap";
-import { FaRegStar, FaStar } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import "./Slider.css";
+import React, { useState, useEffect } from 'react';
 
-const SliderComponent = ({ heading, items, seeDetails }) => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+// Mock data for demonstration
+const flashSaleProducts = [
+  {
+    id: 1,
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=200&fit=crop",
+    originalPrice: 99,
+    salePrice: 19,
+    discount: "42.42% OFF",
+    title: "Jio Mobile stand-JB163 (DV)",
+    variant: "Red Color"
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300&h=200&fit=crop",
+    originalPrice: 150,
+    salePrice: 149,
+    discount: "0.67% OFF",
+    title: "Hanuman Chola - Complete SAMAGREE (DV)",
+    variant: "Complete Package"
+  },
+  {
+    id: 3,
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop",
+    originalPrice: 899,
+    salePrice: 579,
+    discount: "35.6% OFF",
+    title: "Electric Piano Keyboard Musical Toy (DV)",
+    variant: "22 Key"
+  },
+  {
+    id: 4,
+    image: "https://images.unsplash.com/photo-1594736797933-d0b22055fb77?w=300&h=200&fit=crop",
+    originalPrice: 3200,
+    salePrice: 1799,
+    discount: "43.78% OFF",
+    title: "Printed lehenga choli in heavy Butter silk (DV)",
+    variant: "LENGTH IS 44 INCH"
+  },
+  {
+    id: 5,
+    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=200&fit=crop",
+    originalPrice: 155,
+    salePrice: 152,
+    discount: "1.94% OFF",
+    title: "Boro Plus doodh kesar body lotion",
+    variant: "100ml"
+  },
+  {
+    id: 6,
+    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300&h=200&fit=crop",
+    originalPrice: 345,
+    salePrice: 239,
+    discount: "30.72% OFF",
+    title: "Flower Pendant set (DV)",
+    variant: "Red Golden"
+  }
+];
 
-  // Generate a random starting index and rearrange items
-  const shuffledItems = useMemo(() => {
-    if (!items || items.length === 0) return [];
-    
-    // Generate random starting index
-    const randomStart = Math.floor(Math.random() * items.length);
-    
-    // Rearrange array starting from random index
-    return [...items.slice(randomStart), ...items.slice(0, randomStart)];
-  }, [items]);
+const electronicProducts = [
+  {
+    id: 7,
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=200&fit=crop",
+    originalPrice: 2999,
+    salePrice: 1999,
+    discount: "33% OFF",
+    title: "Wireless Headphones",
+    variant: "Black"
+  },
+  {
+    id: 8,
+    image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=300&h=200&fit=crop",
+    originalPrice: 1599,
+    salePrice: 899,
+    discount: "44% OFF",
+    title: "Smart Watch",
+    variant: "Silver"
+  },
+  {
+    id: 9,
+    image: "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=300&h=200&fit=crop",
+    originalPrice: 799,
+    salePrice: 599,
+    discount: "25% OFF",
+    title: "Bluetooth Speaker",
+    variant: "Portable"
+  }
+];
 
+// Reusable Product Card Component
+const ProductCard = ({ product }) => {
   return (
-    <Container className="my-5">
-      <div className="row d-flex justify-content-between align-items-center mx-1 mx-md-3">
-        <div className="col-auto">
-          <h2 className="text-center text-md-start mb-2 mb-md-4">{heading}</h2>
+    <div className="col">
+      <div className="card h-100 shadow-sm border-0" style={{borderRadius: '12px', overflow: 'hidden'}}>
+        <div className="position-relative">
+          <img 
+            src={product.image} 
+            className="card-img-top" 
+            alt={product.title}
+            style={{height: '200px', objectFit: 'cover'}}
+          />
+          <span className="position-absolute top-0 start-0 m-2 badge text-white px-2 py-1" 
+                style={{backgroundColor: '#28a745', fontSize: '10px', fontWeight: 'bold'}}>
+            {product.discount}
+          </span>
         </div>
-        <div className="col-auto">
-          <Link
-            to={`/seeall/${seeDetails}`}
-            onClick={() => {
-              scrollToTop();
-            }}
-            className="text-decoration-none"
-          >
-            <Button
-              variant="outline-secondary"
-              className="rounded-pill px-3 px-md-4 py-1 fw-medium text-secondary border-2"
-              style={{
-                fontSize: "0.9rem",
-                marginTop: "5px",
-                marginBottom: "5px",
-              }}
-            >
-              See All
-            </Button>
-          </Link>
+        <div className="card-body p-3">
+          <div className="d-flex align-items-center mb-2">
+            <span className="text-muted text-decoration-line-through me-2" style={{fontSize: '12px'}}>
+              ₹{product.originalPrice}
+            </span>
+            <span className="fw-bold text-danger" style={{fontSize: '16px'}}>
+              ₹{product.salePrice}
+            </span>
+          </div>
+          <h6 className="card-title mb-2" style={{fontSize: '14px', lineHeight: '1.3'}}>
+            {product.title}
+          </h6>
+          <span className="badge bg-light text-dark" style={{fontSize: '10px'}}>
+            {product.variant}
+          </span>
         </div>
       </div>
-      
-      <div style={{ overflowX: "auto", whiteSpace: "nowrap" }}>
-        <Row className="flex-nowrap" style={{ flexWrap: "nowrap", marginLeft: "8px", marginRight: "8px" }}>
-          {shuffledItems.map((product, idx) => {
-            // Calculate original index for unique key
-            const originalIndex = items.findIndex(item => item.id === product.id);
-            
-            return (
-              <div
-                key={`${product.id}-${originalIndex}`}
-                className="mb-3"
-                style={{ 
-                  flex: "0 0 auto", 
-                  width: "160px", 
-                  marginRight: "12px"
-                }}
-              >
-                <Card
-                  className="h-100 w-100 border-0 position-relative"
-                  style={{
-                    borderRadius: "10px",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                  }}
-                >
-                  <div
-                    style={{
-                      height: "180px",
-                      width: "160px",
-                      margin: "0 auto",
-                      borderRadius: "10px",
-                      overflow: "hidden",
-                      position: "relative",
-                    }}
-                  >
-                    <Link
-                      to={{
-                        pathname: `/cartDetails/${encodeURIComponent(
-                          product.product_name
-                        )}/${product.id}`,
-                      }}
-                      state={{ product }}
-                      onClick={() => {
-                        scrollToTop();
-                        console.log(
-                          "Clicked Product:",
-                          product.product_name,
-                          "| ID:",
-                          product.id
-                        );
-                      }}
-                    >
-                      <Card.Img
-                        src={
-                          product.product_slider_image[0]?.image ||
-                          "https://via.placeholder.com/180x180"
-                        }
-                        style={{ objectFit: "cover", height: "100%", width: "100%" }}
-                      />
-                    </Link>
-                  </div>
-                  
-                  <Card.Body className="px-2 py-2">
-                    <Card.Title
-                      className="mb-1 text-black fw-bold"
-                      style={{
-                        fontSize: "0.8rem",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                      }}
-                    >
-                      {product.product_name}
-                    </Card.Title>
-                    
-                    <div className="d-flex align-items-center mb-2">
-                      <span className="fw-bolder text-success me-2" style={{ fontSize: "0.9rem" }}>
-                        ₹{product.selling_price}
-                      </span>
-                      <span>
-                        <strike
-                          className="text-muted"
-                          style={{ fontSize: "0.75rem" }}
-                        >
-                          ₹{product.mrp}
-                        </strike>
-                      </span>
-                    </div>
-                    
-                    <div>
-                      <span 
-                        className="fw-bolder text-black"
-                        style={{ 
-                          fontSize: "0.75rem",
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          display: "block"
-                        }}
-                      >
-                        {product.username}
-                      </span>
-                      <div className="d-flex mt-1">
-                        {[...Array(4)].map((_, i) => (
-                          <FaStar
-                            key={i}
-                            style={{
-                              color: "green",
-                              fontSize: "0.8rem",
-                              marginRight: "2px",
-                            }}
-                          />
-                        ))}
-                        <FaRegStar
-                          style={{
-                            color: "grey",
-                            fontSize: "0.8rem",
-                            marginLeft: "2px",
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </div>
-            );
-          })}
-        </Row>
-      </div>
-    </Container>
+    </div>
   );
 };
 
-export default SliderComponent;
+// Reusable Slider Component
+const ReusableSlider = ({ title, products, sectionStyle = {} }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(4);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 576) setItemsPerView(1);
+      else if (window.innerWidth < 768) setItemsPerView(2);
+      else if (window.innerWidth < 992) setItemsPerView(3);
+      else setItemsPerView(4);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentIndex(prev => 
+      prev + itemsPerView >= products.length ? 0 : prev + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex(prev => 
+      prev === 0 ? Math.max(0, products.length - itemsPerView) : prev - 1
+    );
+  };
+
+  const visibleProducts = products.slice(currentIndex, currentIndex + itemsPerView);
+  
+  // Fill with products from the beginning if we don't have enough
+  while (visibleProducts.length < itemsPerView && products.length > 0) {
+    visibleProducts.push(products[visibleProducts.length - currentIndex] || products[0]);
+  }
+
+  return (
+    <div className="container-fluid py-4" style={{...sectionStyle}}>
+      <div className="row align-items-center mb-4">
+        <div className="col">
+          <div className="d-flex align-items-center">
+            <h2 className="fw-bold mb-0 me-3" style={{fontSize: '24px', color: '#333'}}>
+              {title}
+            </h2>
+            {title === 'Flash Sale' && (
+              <div className="d-flex align-items-center">
+                <div className="bg-warning px-2 py-1 rounded-circle me-2">
+                  <span style={{fontSize: '12px'}}>⏰</span>
+                </div>
+                <small className="text-muted">Buy Everyday only in Rs.1/- in Exact Time 11:11 AM at Flash Sale</small>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="col-auto">
+          <button className="btn btn-outline-primary btn-sm">View More</button>
+        </div>
+      </div>
+
+      <div className="position-relative">
+        {/* Navigation Buttons */}
+        <button 
+          className="btn btn-light position-absolute start-0 top-50 translate-middle-y shadow-sm"
+          onClick={prevSlide}
+          style={{zIndex: 10, width: '40px', height: '40px', borderRadius: '50%'}}
+          disabled={currentIndex === 0}
+        >
+          &#8249;
+        </button>
+        
+        <button 
+          className="btn btn-light position-absolute end-0 top-50 translate-middle-y shadow-sm"
+          onClick={nextSlide}
+          style={{zIndex: 10, width: '40px', height: '40px', borderRadius: '50%'}}
+          disabled={currentIndex + itemsPerView >= products.length}
+        >
+          &#8250;
+        </button>
+
+        {/* Product Cards */}
+        <div className="mx-5">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+            {visibleProducts.map((product, index) => (
+              <ProductCard key={`${product.id}-${index}`} product={product} />
+            ))}
+          </div>
+        </div>
+
+        {/* Dots Indicator */}
+        <div className="d-flex justify-content-center mt-4">
+          {Array.from({length: Math.ceil(products.length / itemsPerView)}).map((_, index) => (
+            <button
+              key={index}
+              className={`btn btn-sm mx-1 ${Math.floor(currentIndex / itemsPerView) === index ? 'btn-primary' : 'btn-outline-secondary'}`}
+              onClick={() => setCurrentIndex(index * itemsPerView)}
+              style={{width: '10px', height: '10px', borderRadius: '50%', padding: 0}}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Main Component showing multiple sliders
+const Slider = () => {
+  return (
+    <div className='hero-section'>
+      {/* Flash Sale Slider */}
+      
+      <ReusableSlider 
+        title="Flash Sale" 
+        products={flashSaleProducts}
+        sectionStyle={{backgroundColor: '#f8f9fa'}}
+      />
+
+      {/* Electronics Slider */}
+      <ReusableSlider 
+        title="Electronics" 
+        products={electronicProducts}
+        sectionStyle={{backgroundColor: '#fff'}}
+      />
+
+      {/* Another Flash Sale with different styling */}
+      <ReusableSlider 
+        title="Special Offers" 
+        products={flashSaleProducts.slice(2, 5)}
+        sectionStyle={{backgroundColor: '#e3f2fd'}}
+      />
+    </div>
+  );
+};
+
+export default Slider;
