@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { logo } from "../../assets";
-
+import { Link } from "react-router-dom";
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -60,6 +60,36 @@ const Header = () => {
               </div>
             </div>
 
+<<<<<<< HEAD
+            {/* Right Menu (Desktop only) */}
+            <div className="col-lg-4 col-md-4 col-sm-6 col-6 d-none d-md-flex justify-content-end align-items-center flex-wrap gap-3">
+              <div className="d-flex align-items-center text-dark">
+                <Link
+                  to="/order"
+                  className="text-dark text-decoration-none d-flex align-items-center"
+                >
+                  <i className="fas fa-box me-1"></i>
+                  <span className="small">My Orders</span>
+                </Link>
+              </div>
+              <div className="d-flex align-items-center text-dark position-relative">
+                <Link
+                  to="/login"
+                  className="text-dark text-decoration-none d-flex align-items-center"
+                >
+                  <i className="fas fa-warehouse me-2"></i> Wholesale
+                </Link>
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
+                  1
+                </span>
+              </div>
+              <div className="d-flex align-items-center text-dark position-relative">
+                <i className="fas fa-shopping-cart me-1"></i>
+                <span className="small">Cart</span>
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
+                  0
+                </span>
+=======
             {/* Header Icons - Desktop and Large Tablets */}
             <div className="col-sm-3 d-none d-lg-flex justify-content-end me-5">
               <div className="d-flex align-items-center gap-xl-3">
@@ -92,6 +122,7 @@ const Header = () => {
                   <i className="fas fa-bell me-2"></i>
                   <span className="small d-none d-xl-inline">Notification</span>
                 </div>
+>>>>>>> 5fc55c464f0680cdd0f470bb7ce654a675c11d92
               </div>
             </div>
 
@@ -135,6 +166,36 @@ const Header = () => {
                 </button>
               </div>
 
+<<<<<<< HEAD
+              {/* Menu */}
+              <div className="d-flex flex-column gap-3 mb-3">
+                <div className="d-flex align-items-center">
+                  <Link
+                    to="/order"
+                    className="text-dark text-decoration-none d-flex align-items-center"
+                  >
+                    <i className="fas fa-box me-2"></i> My Orders
+                  </Link>
+                </div>
+
+                <div className="d-flex align-items-center position-relative">
+                  <Link
+                    to="/login"
+                    className="text-dark text-decoration-none d-flex align-items-center"
+                  >
+                    <i className="fas fa-warehouse me-2"></i> Wholesale
+                  </Link>
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
+                    1
+                  </span>
+                </div>
+
+                <div className="d-flex align-items-center position-relative">
+                  <i className="fas fa-shopping-cart me-2"></i> Cart
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
+                    0
+                  </span>
+=======
               {/* Mobile Menu Items */}
               <div className="d-flex flex-column gap-3 mb-4 ">
                 <div className="d-flex align-items-center py-2 mobile-menu-item">
@@ -150,6 +211,7 @@ const Header = () => {
                   <i className="fas fa-shopping-cart me-3"></i>
                   <span>Cart</span>
                   <span className="position-absolute badge rounded-pill bg-danger small ms-2" style={{left: "60px"}}>0</span>
+>>>>>>> 5fc55c464f0680cdd0f470bb7ce654a675c11d92
                 </div>
                 <div className="d-flex align-items-center py-2 mobile-menu-item">
                   <i className="fas fa-bell me-3"></i>
