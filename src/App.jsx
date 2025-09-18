@@ -4,7 +4,8 @@ import Home from "./pages/Home/index";
 import Cart from "./pages/Cart/index";
 import OrderStatus from "./components/Orders/OrderStatus";
 import LoginForm from "./components/LoginForm/LoginForm";
-
+import FlashSaleProducts from "./pages/flashSalePage/FlashSalePage.jsx";
+import Video from "./pages/video/Video.jsx";
 function App() {
   return (
     <Routes>
@@ -14,6 +15,8 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<OrderStatus />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/flash-sale" element={<FlashSaleProducts />} />
+        <Route path="/videos" element={<Video />} />
       </Route>
     </Routes>
   );

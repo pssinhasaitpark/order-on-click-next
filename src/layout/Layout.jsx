@@ -5,11 +5,13 @@ import { Container } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 import { Footer } from "../components/index.js";
 import ScrollingGifBanner from "../components/ScrollingGifBanner/ScrollingGifBanner.jsx";
+import TopHeader from "../components/TopHeader/index.jsx";
 // import SubHeader from "../components/subHeader";
 
 export default function Layout() {
   return (
     <>
+      <TopHeader />
       <HeaderFirst />
       {/* <SubHeader /> */}
       <Container>

@@ -1,0 +1,4 @@
+input.form-control::placeholder {
+  color: #6c757d; /* Bootstrap's muted text color */
+  opacity: 1;
+}
