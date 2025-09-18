@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=200&fit=crop",
+    "originalPrice": 99,
+    "salePrice": 19,
+    "discount": "42.42% OFF",
+    "title": "Jio Mobile stand-JB163 (DV)",
+    "variant": "Red Color"
+  },
+  {
+    "id": 2,
+    "image": "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300&h=200&fit=crop",
+    "originalPrice": 150,
+    "salePrice": 149,
+    "discount": "0.67% OFF",
+    "title": "Hanuman Chola - Complete SAMAGREE (DV)",
+    "variant": "Complete Package"
+  },
+  {
+    "id": 3,
+    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop",
+    "originalPrice": 899,
+    "salePrice": 579,
+    "discount": "35.6% OFF",
+    "title": "Electric Piano Keyboard Musical Toy (DV)",
+    "variant": "22 Key"
+  },
+  {
+    "id": 4,
+    "image": "https://images.unsplash.com/photo-1594736797933-d0b22055fb77?w=300&h=200&fit=crop",
+    "originalPrice": 3200,
+    "salePrice": 1799,
+    "discount": "43.78% OFF",
+    "title": "Printed lehenga choli in heavy Butter silk (DV)",
+    "variant": "LENGTH IS 44 INCH"
+  },
+  {
+    "id": 5,
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=200&fit=crop",
+    "originalPrice": 155,
+    "salePrice": 152,
+    "discount": "1.94% OFF",
+    "title": "Boro Plus doodh kesar body lotion",
+    "variant": "100ml"
+  },
+  {
+    "id": 6,
+    "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300&h=200&fit=crop",
+    "originalPrice": 345,
+    "salePrice": 239,
+    "discount": "30.72% OFF",
+    "title": "Flower Pendant set (DV)",
+    "variant": "Red Golden"
+  }
+]

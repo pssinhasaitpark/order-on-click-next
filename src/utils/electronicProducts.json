@@ -1,0 +1,29 @@
+[
+  {
+    "id": 7,
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=200&fit=crop",
+    "originalPrice": 2999,
+    "salePrice": 1999,
+    "discount": "33% OFF",
+    "title": "Wireless Headphones",
+    "variant": "Black"
+  },
+  {
+    "id": 8,
+    "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=300&h=200&fit=crop",
+    "originalPrice": 1599,
+    "salePrice": 899,
+    "discount": "44% OFF",
+    "title": "Smart Watch",
+    "variant": "Silver"
+  },
+  {
+    "id": 9,
+    "image": "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=300&h=200&fit=crop",
+    "originalPrice": 799,
+    "salePrice": 599,
+    "discount": "25% OFF",
+    "title": "Bluetooth Speaker",
+    "variant": "Portable"
+  }
+]
