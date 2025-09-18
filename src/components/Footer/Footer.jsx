@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { MadeInIndia, ShopOnGoogle } from "../../assets";
 
 const Footer = () => {
   return (
@@ -10,20 +11,20 @@ const Footer = () => {
           <div className="col-lg-3 col-md-6 col-12 mb-4 text-center">
             <div className="mb-3">
               {/* Replace with your GIF URL */}
-              <img 
-                src="https://via.placeholder.com/200x100/FFD700/000000?text=ORDER+ON+CLICK+CHANNEL" 
-                alt="Order on Click Channel" 
+              <img
+                src="https://via.placeholder.com/200x100/FFD700/000000?text=ORDER+ON+CLICK+CHANNEL"
+                alt="Order on Click Channel"
                 className="img-fluid rounded shadow-sm"
-                style={{ maxWidth: '200px', height: 'auto' }}
+                style={{ maxWidth: "200px", height: "auto" }}
               />
             </div>
             <div>
               <a href="#" className="text-decoration-none">
-                <img 
+                <img
                   src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                   alt="Get it on Google Play"
                   className="img-fluid"
-                  style={{ maxWidth: '150px', height: 'auto' }}
+                  style={{ maxWidth: "150px", height: "auto" }}
                 />
               </a>
             </div>
@@ -31,21 +32,21 @@ const Footer = () => {
 
           {/* Middle Section - GIFs */}
           <div className="col-lg-3 col-md-6 col-12 mb-4 text-center">
-            <div className="d-flex flex-column align-items-center">
-              <div className="mb-3">
-                <img 
-                  src="https://via.placeholder.com/120x120/FF6B35/FFFFFF?text=MADE+IN+INDIA" 
-                  alt="Made in India" 
-                  className="img-fluid rounded-circle shadow-sm mb-2"
-                  style={{ width: '100px', height: '100px' }}
+            <div className="d-flex flex-row  justify-content-center align-items-center gap-3">
+              <div>
+                <img
+                  src={MadeInIndia}
+                  alt="Made in India"
+                  className="img-fluid w-50 rounded-circle shadow-sm "
+                  // style={{ width: '100px', height: '100px' }}
                 />
               </div>
               <div>
-                <img 
-                  src="https://via.placeholder.com/120x120/4285F4/FFFFFF?text=ORDER+ON+CLICK" 
-                  alt="Order on Click" 
+                <img
+                  src={ShopOnGoogle}
+                  alt="Order on Click"
                   className="img-fluid rounded shadow-sm"
-                  style={{ width: '120px', height: '80px' }}
+                  style={{ width: "120px", height: "120px" }}
                 />
               </div>
             </div>
@@ -53,7 +54,9 @@ const Footer = () => {
 
           {/* Quick Links Section */}
           <div className="col-lg-3 col-md-6 col-12 mb-4">
-            <h5 className="text-uppercase fw-bold mb-3 text-warning">Quick Links</h5>
+            <h5 className="text-uppercase fw-bold mb-3 text-warning">
+              Quick Links
+            </h5>
             <ul className="list-unstyled">
               <li className="mb-2">
                 <a href="#" className="text-light text-decoration-none">
@@ -75,7 +78,9 @@ const Footer = () => {
 
           {/* Register Section */}
           <div className="col-lg-3 col-md-6 col-12 mb-4">
-            <h5 className="text-uppercase fw-bold mb-3 text-warning">Register</h5>
+            <h5 className="text-uppercase fw-bold mb-3 text-warning">
+              Register
+            </h5>
             <ul className="list-unstyled">
               <li className="mb-2">
                 <a href="#" className="text-light text-decoration-none">
@@ -110,27 +115,51 @@ const Footer = () => {
           <div className="col-lg-4 col-md-12 mb-3 mb-lg-0">
             <div className="d-flex justify-content-center gap-3">
               <a href="#" className="text-light">
-                <div className="bg-primary rounded-circle d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+                <div
+                  className="bg-primary rounded-circle d-flex align-items-center justify-content-center"
+                  style={{ width: "40px", height: "40px" }}
+                >
                   <i className="fab fa-facebook-f"></i>
                 </div>
               </a>
               <a href="#" className="text-light">
-                <div className="bg-info rounded-circle d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+                <div
+                  className="bg-info rounded-circle d-flex align-items-center justify-content-center"
+                  style={{ width: "40px", height: "40px" }}
+                >
                   <i className="fab fa-twitter"></i>
                 </div>
               </a>
               <a href="#" className="text-light">
-                <div className="rounded-circle d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px', background: 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)' }}>
+                <div
+                  className="rounded-circle d-flex align-items-center justify-content-center"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    background:
+                      "linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)",
+                  }}
+                >
                   <i className="fab fa-instagram"></i>
                 </div>
               </a>
               <a href="#" className="text-light">
-                <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+                <div
+                  className="bg-danger rounded-circle d-flex align-items-center justify-content-center"
+                  style={{ width: "40px", height: "40px" }}
+                >
                   <i className="fab fa-youtube"></i>
                 </div>
               </a>
               <a href="#" className="text-light">
-                <div className="rounded-circle d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px', backgroundColor: '#0077b5' }}>
+                <div
+                  className="rounded-circle d-flex align-items-center justify-content-center"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundColor: "#0077b5",
+                  }}
+                >
                   <i className="fab fa-linkedin-in"></i>
                 </div>
               </a>
@@ -153,8 +182,8 @@ const Footer = () => {
       </div>
 
       {/* Include Font Awesome for icons */}
-      <link 
-        rel="stylesheet" 
+      <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       />
     </footer>

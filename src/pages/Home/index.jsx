@@ -117,14 +117,17 @@ const BannerSection = () => {
               </button>
             </div>
           </div>
-        </div>
 
-        {/* Right Sidebar - Placeholder */}
-        <div className="col-lg-3">
-          <div className="bg-light rounded p-3 h-100">
-            <h6 className="fw-bold text-dark mb-3">Hire On Rent</h6>
-            <p>Coming Soon</p>
+          {/* Right Sidebar - Placeholder */}
+          <div className="col-lg-3">
+            <div className="bg-light rounded p-3 h-100">
+              <h6 className="fw-bold text-dark mb-3">Hire On Rent</h6>
+              <p>Coming Soon</p>
+            </div>
           </div>
+        </div>
+        <div className="hero-section d-flex justify-content-center mx-auto  my-4 slider">
+          <Slider />
         </div>
       </div>
     </div>
