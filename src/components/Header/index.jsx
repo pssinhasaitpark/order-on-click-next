@@ -35,10 +35,10 @@ const Header = () => {
             {/* Logo */}
             <div className="col-auto">
               <div className="d-flex align-items-center ms-4 justify-content-end">
-                <img 
-                  src={logo} 
-                  alt="Logo" 
-                  className="img-fluid" 
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="img-fluid"
                   style={{ maxHeight: "60px", height: "auto" }}
                 />
               </div>
@@ -60,7 +60,6 @@ const Header = () => {
               </div>
             </div>
 
-<<<<<<< HEAD
             {/* Right Menu (Desktop only) */}
             <div className="col-lg-4 col-md-4 col-sm-6 col-6 d-none d-md-flex justify-content-end align-items-center flex-wrap gap-3">
               <div className="d-flex align-items-center text-dark">
@@ -89,40 +88,6 @@ const Header = () => {
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
                   0
                 </span>
-=======
-            {/* Header Icons - Desktop and Large Tablets */}
-            <div className="col-sm-3 d-none d-lg-flex justify-content-end me-5">
-              <div className="d-flex align-items-center gap-xl-3">
-                {/* My Orders */}
-                <div className="d-flex align-items-center text-dark px-2 py-1 header-icon-item">
-                  <i className="fas fa-box me-2"></i>
-                  <span className="small d-none d-xl-inline">My Orders</span>
-                </div>
-
-                {/* Wholesale */}
-                <div className="d-flex align-items-center text-dark position-relative px-2 py-1 header-icon-item">
-                  <i className="fas fa-warehouse me-2"></i>
-                  <span className="small d-none d-xl-inline">Wholesale</span>
-                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
-                    1
-                  </span>
-                </div>
-
-                {/* Cart */}
-                <div className="d-flex align-items-center text-dark position-relative px-2 py-1 header-icon-item">
-                  <i className="fas fa-shopping-cart me-2"></i>
-                  <span className="small d-none d-xl-inline">Cart</span>
-                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
-                    0
-                  </span>
-                </div>
-
-                {/* Notifications */}
-                <div className="d-flex align-items-center text-dark px-2 py-1 header-icon-item">
-                  <i className="fas fa-bell me-2"></i>
-                  <span className="small d-none d-xl-inline">Notification</span>
-                </div>
->>>>>>> 5fc55c464f0680cdd0f470bb7ce654a675c11d92
               </div>
             </div>
 
@@ -134,11 +99,21 @@ const Header = () => {
                 </div>
                 <div className="position-relative">
                   <i className="fas fa-warehouse text-dark"></i>
-                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{fontSize: "0.6rem"}}>1</span>
+                  <span
+                    className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    style={{ fontSize: "0.6rem" }}
+                  >
+                    1
+                  </span>
                 </div>
                 <div className="position-relative">
                   <i className="fas fa-shopping-cart text-dark"></i>
-                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{fontSize: "0.6rem"}}>0</span>
+                  <span
+                    className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    style={{ fontSize: "0.6rem" }}
+                  >
+                    0
+                  </span>
                 </div>
                 <div>
                   <i className="fas fa-bell text-dark"></i>
@@ -166,7 +141,6 @@ const Header = () => {
                 </button>
               </div>
 
-<<<<<<< HEAD
               {/* Menu */}
               <div className="d-flex flex-column gap-3 mb-3">
                 <div className="d-flex align-items-center">
@@ -195,23 +169,6 @@ const Header = () => {
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
                     0
                   </span>
-=======
-              {/* Mobile Menu Items */}
-              <div className="d-flex flex-column gap-3 mb-4 ">
-                <div className="d-flex align-items-center py-2 mobile-menu-item">
-                  <i className="fas fa-box me-3"></i>
-                  <span>My Orders</span>
-                </div>
-                <div className="d-flex align-items-center position-relative py-2 mobile-menu-item">
-                  <i className="fas fa-warehouse me-3"></i>
-                  <span>Wholesale</span>
-                  <span className="position-absolute badge rounded-pill bg-danger small ms-2" style={{left: "100px"}}>1</span>
-                </div>
-                <div className="d-flex align-items-center position-relative py-2 mobile-menu-item">
-                  <i className="fas fa-shopping-cart me-3"></i>
-                  <span>Cart</span>
-                  <span className="position-absolute badge rounded-pill bg-danger small ms-2" style={{left: "60px"}}>0</span>
->>>>>>> 5fc55c464f0680cdd0f470bb7ce654a675c11d92
                 </div>
                 <div className="d-flex align-items-center py-2 mobile-menu-item">
                   <i className="fas fa-bell me-3"></i>
@@ -225,7 +182,10 @@ const Header = () => {
                 <ul className="list-unstyled">
                   {navItems.map((item, index) => (
                     <li key={index} className="py-2">
-                      <a href="#" className="text-dark text-decoration-none d-block py-1">
+                      <a
+                        href="#"
+                        className="text-dark text-decoration-none d-block py-1"
+                      >
                         {item}
                       </a>
                     </li>
@@ -287,7 +247,7 @@ const Header = () => {
           color: #dc3545 !important;
           background-color: rgba(220, 53, 69, 0.1);
         }
-        
+
         /* Responsive breakpoint adjustments */
         @media (max-width: 575.98px) {
           .container-fluid {
@@ -295,7 +255,7 @@ const Header = () => {
             padding-right: 8px;
           }
         }
-        
+
         @media (min-width: 1400px) {
           .gap-xl-4 {
             gap: 2rem !important;
