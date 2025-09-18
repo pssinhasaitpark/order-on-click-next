@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../redux/slices/categorySlice";
-
+import Slider from "../../components/slider/Slider";
 const BannerSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const dispatch = useDispatch();
