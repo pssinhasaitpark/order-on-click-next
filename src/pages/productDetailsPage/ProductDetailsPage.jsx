@@ -387,6 +387,7 @@ const ProductDetailPage = () => {
                           </div>
                           <h6 className="card-title small text-center">
                             {product.name}
+                            
                           </h6>
                         </div>
                       </div>
