@@ -3,7 +3,6 @@ import Layout from "./layout/Layout";
 import OrderStatus from "./components/Orders/OrderStatus";
 import HeaderSeeAll from "./pages/seeAllPage/SeeAllPage";
 import LoginForm from "./components/LoginForm/LoginForm";
-import { Cart, FlashSaleProducts, Home } from "./pages";
 import Video from "./pages/video/Video.jsx";
 import { Cart, FlashSaleProducts, Home, ProductDetailPage } from "./pages";
 function App() {
