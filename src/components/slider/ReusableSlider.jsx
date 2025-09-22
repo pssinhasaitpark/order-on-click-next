@@ -198,6 +198,14 @@ import { useNavigate } from "react-router-dom";
 
 // Reusable Product Card Component
 const ProductCard = ({ product }) => {
+  const image =
+    product?.grocery_image?.[0]?.image_file ||
+    "https://via.placeholder.com/200";
+  const title = product?.name || "No Name";
+  const originalPrice = product?.grocery_price?.[0]?.mrp_price || "0";
+  const discount = product?.grocery_price?.[0]?.discount || "0";
+  const variant = product?.grocery_price?.[0]?.attribute || "Default";
+
   return (
     <div className="col">
       <div
@@ -206,9 +214,9 @@ const ProductCard = ({ product }) => {
       >
         <div className="position-relative">
           <img
-            src={product.image}
+            src={image}
             className="card-img-top"
-            alt={product.title}
+            alt={title}
             style={{ height: "200px", objectFit: "cover" }}
           />
           <span
@@ -219,7 +227,7 @@ const ProductCard = ({ product }) => {
               fontWeight: "bold",
             }}
           >
-            {product.discount}
+            {discount}% OFF
           </span>
         </div>
         <div className="card-body p-3">
@@ -228,23 +236,23 @@ const ProductCard = ({ product }) => {
               className="text-muted text-decoration-line-through me-2"
               style={{ fontSize: "12px" }}
             >
-              ₹{product.originalPrice}
+              ₹{originalPrice}
             </span>
             <span className="fw-bold text-danger" style={{ fontSize: "16px" }}>
-              ₹{product.salePrice}
+              ₹{Math.round(originalPrice - (originalPrice * discount) / 100)}
             </span>
           </div>
           <h6
             className="card-title mb-2"
             style={{ fontSize: "14px", lineHeight: "1.3" }}
           >
-            {product.title}
+            {title}
           </h6>
           <span
             className="badge bg-light text-dark"
             style={{ fontSize: "10px" }}
           >
-            {product.variant}
+            {variant}
           </span>
         </div>
       </div>
@@ -252,8 +260,13 @@ const ProductCard = ({ product }) => {
   );
 };
 
-// Reusable Slider Component
-const ReusableSlider = ({ title, products, sectionStyle = {} }) => {
+// Reusable Slider Component with loader
+const ReusableSlider = ({
+  title,
+  products,
+  loading = false,
+  sectionStyle = {},
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
   const navigate = useNavigate();
@@ -283,7 +296,6 @@ const ReusableSlider = ({ title, products, sectionStyle = {} }) => {
   };
 
   const handleViewMoreClick = () => {
-    // Navigate to the "see-all" page
     navigate("/see-all");
   };
 
@@ -292,10 +304,27 @@ const ReusableSlider = ({ title, products, sectionStyle = {} }) => {
     currentIndex + itemsPerView
   );
 
-  // Fill with products from the beginning if we don't have enough
   while (visibleProducts.length < itemsPerView && products.length > 0) {
     visibleProducts.push(
       products[visibleProducts.length - currentIndex] || products[0]
+    );
+  }
+
+  // Render loader when loading is true
+  if (loading) {
+    return (
+      <div
+        className="container-fluid py-4 text-center"
+        style={{ ...sectionStyle }}
+      >
+        <div
+          className="spinner-border text-primary"
+          role="status"
+          style={{ width: "3rem", height: "3rem" }}
+        >
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
     );
   }
 
@@ -333,7 +362,6 @@ const ReusableSlider = ({ title, products, sectionStyle = {} }) => {
         </div>
       </div>
       <div className="position-relative">
-        {/* Navigation Buttons */}
         <button
           className="btn btn-light position-absolute start-0 top-50 translate-middle-y shadow-sm"
           onClick={prevSlide}
@@ -360,7 +388,6 @@ const ReusableSlider = ({ title, products, sectionStyle = {} }) => {
         >
           &#8250;
         </button>
-        {/* Product Cards */}
         <div className="mx-5">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
             {visibleProducts.map((product, index) => (
@@ -368,7 +395,6 @@ const ReusableSlider = ({ title, products, sectionStyle = {} }) => {
             ))}
           </div>
         </div>
-        {/* Dots Indicator */}
         <div className="d-flex justify-content-center mt-4">
           {Array.from({
             length: Math.ceil(products.length / itemsPerView),

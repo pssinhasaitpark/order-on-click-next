@@ -157,7 +157,7 @@ const SeeAllPage = () => {
     const params = {
       category_id: selectedCategories.length > 0 ? selectedCategories[0] : "",
       search: searchQuery.trim() || "",
-      page_no: customParams.page_no || pageNo, // Use customParams.page_no if provided
+      page_no: customParams.page_no || pageNo,
       limit: 12,
       ...customParams,
     };
