@@ -1,123 +1,53 @@
 import React, { useState } from "react";
 import ScrollingGifBanner from "../../components/ScrollingGifBanner/ScrollingGifBanner";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ProductDetailPage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const images = [
+  // Get the product data from the location state
+  const { product, pageNo } = location.state || {};
+  const images = product?.grocery_image?.map((img) => img.image_file) || [];
+
+  // Fallback if no images
+  const fallbackImages = [
     "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400&h=500&fit=crop",
     "https://images.unsplash.com/photo-1594736797933-d0b22d3b6bf5?w=400&h=500&fit=crop",
     "https://images.unsplash.com/photo-1583391733975-b8b7e8b4b76a?w=400&h=500&fit=crop",
     "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&h=500&fit=crop",
   ];
 
-  const topSellingProducts = [
-    {
-      id: 1,
-      name: "Jio Mobile Stand JB163 (DV)",
-      originalPrice: 33,
-      salePrice: 19,
-      discount: "42.42% OFF",
-      rating: 0,
-      image:
-        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=100&h=100&fit=crop",
-    },
-    {
-      id: 2,
-      name: "MATA RANI CHARAN (GR1)",
-      originalPrice: 300,
-      salePrice: 239,
-      discount: "20.33% OFF",
-      rating: 0,
-      image:
-        "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=100&h=100&fit=crop",
-    },
-    {
-      id: 3,
-      name: "Roly Poly Pragee (DV)",
-      originalPrice: 409,
-      salePrice: 199,
-      discount: "51.34% OFF",
-      rating: 0,
-      image:
-        "https://images.unsplash.com/photo-1594736797933-d0b22d3b6bf5?w=100&h=100&fit=crop",
-    },
-    {
-      id: 4,
-      name: "Sequence Palazzo (DV)",
-      originalPrice: 860,
-      salePrice: 599,
-      discount: "30.35% OFF",
-      rating: 0,
-      image:
-        "https://images.unsplash.com/photo-1583391733975-b8b7e8b4b76a?w=100&h=100&fit=crop",
-    },
-  ];
+  // Use product images or fallback
+  const displayImages = images.length > 0 ? images : fallbackImages;
 
-  const productSlider = [
-    {
-      id: 1,
-      name: "Printed lehenga choli in heavy Butter silk (DV)",
-      originalPrice: 3200,
-      salePrice: 1799,
-      discount: "43.78% OFF",
-      image:
-        "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=200&h=250&fit=crop",
-    },
-    {
-      id: 2,
-      name: "Diamond chain lagging (DV)",
-      originalPrice: 310,
-      salePrice: 189,
-      discount: "39.03% OFF",
-      image:
-        "https://images.unsplash.com/photo-1594736797933-d0b22d3b6bf5?w=200&h=250&fit=crop",
-    },
-    {
-      id: 3,
-      name: "Girls jeans | Tube Design (DV)",
-      originalPrice: 630,
-      salePrice: 329,
-      discount: "47.78% OFF",
-      image:
-        "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=200&h=250&fit=crop",
-    },
-    {
-      id: 4,
-      name: "Kurta Skirt With Dupatta Set, green white (DV)",
-      originalPrice: 1100,
-      salePrice: 699,
-      discount: "36.45% OFF",
-      image:
-        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=200&h=250&fit=crop",
-    },
-    {
-      id: 5,
-      name: "Kurta Skirt With Dupatta Set, pink white (DV)",
-      originalPrice: 1100,
-      salePrice: 699,
-      discount: "36.45% OFF",
-      image:
-        "https://images.unsplash.com/photo-1583391733975-b8b7e8b4b76a?w=200&h=250&fit=crop",
-    },
-  ];
+  // Use product data for the page
+  const productName = product?.name || "Product Name";
+  const productNameHindi = product?.name_hindi || "Product Name (Hindi)";
+  const productDescription =
+    product?.description || "Product description goes here.";
+  const productPrice =
+    product?.grocery_price?.[0]?.discount ||
+    product?.grocery_price?.[0]?.mrp_price ||
+    "0";
+  const productMrpPrice = product?.grocery_price?.[0]?.mrp_price || "0";
+  const productCategory = product?.category_name || "Category";
 
-  const nextSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev + 1) % Math.max(1, productSlider.length - 3)
+  // Only render the page if product data is available
+  if (!product) {
+    return (
+      <div className="container-fluid py-4 text-center">
+        <h4>No product data available</h4>
+        <button className="btn btn-primary mt-3" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
+      </div>
     );
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) =>
-        (prev - 1 + Math.max(1, productSlider.length - 3)) %
-        Math.max(1, productSlider.length - 3)
-    );
-  };
+  }
 
   return (
     <div className="container-fluid py-4">
@@ -129,7 +59,7 @@ const ProductDetailPage = () => {
             {/* Thumbnail Images */}
             <div className="col-2">
               <div className="d-flex flex-column gap-2">
-                {images.map((img, index) => (
+                {displayImages.map((img, index) => (
                   <img
                     key={index}
                     src={img}
@@ -147,11 +77,10 @@ const ProductDetailPage = () => {
                 ))}
               </div>
             </div>
-
             {/* Main Product Image */}
             <div className="col-10">
               <img
-                src={images[selectedImage]}
+                src={displayImages[selectedImage]}
                 alt="Main product"
                 className="img-fluid border rounded"
                 style={{ height: "500px", width: "100%", objectFit: "cover" }}
@@ -159,17 +88,13 @@ const ProductDetailPage = () => {
             </div>
           </div>
         </div>
-
         {/* Product Details Section */}
         <div className="col-md-6">
           <div className="ps-4">
             {/* Product Title */}
             <div className="bg-primary text-white p-2 rounded mb-3">
-              <h4 className="mb-0">
-                Printed lehenga choli in heavy Butter silk (DV)
-              </h4>
+              <h4 className="mb-0">{productName}</h4>
             </div>
-
             {/* Rating */}
             <div className="mb-3">
               <div className="d-flex align-items-center">
@@ -179,38 +104,27 @@ const ProductDetailPage = () => {
                 <small className="text-muted">(12 reviews)</small>
               </div>
             </div>
-
             {/* Product Description */}
             <div className="mb-4">
               <p className="text-justify small">
-                <strong>FABRIC DETAILS LEHENGA :</strong> HEAVY BUTTER SILK WITH
-                DIGITAL PRINT & 3.5 MTR FLAIR FULLY STITCH • WITH • REAL MIRROR
-                WORK UNDER : SILK CHOLI : SOFT BUTTER SILK & REAL MIRROR WORK (
-                1.25 MTR FABRIC) DUPATTA : HEAVY BUTTER SILK WITH REAL MIRROR
-                WORK FREE SIZE FULLY STITCHED LEHENGA WITH UN STITCH 1.25 MTR
-                BORDER • LEHENGA LENGTH IS 44 INCHES *ebb things about can be
-                seen in designer, Red stitching this its own significance as
-                most of the brides choose to wear. In Red and, you also wear the
-                bridesmaid and you also want to wear something which goes glory!
-                And, since you are getting married, you must wear a lehenga that
-                brings out the best in you. Always go for shopping some months
-                prior to your wedding. And, before your big day make sure you
-                try the outfit one final time for some last minute adjustments
-                and alterations. For order anything begin to view
-                orderonclick.com or download the Electronic app now.
+                <strong>Description:</strong> {productDescription}
               </p>
             </div>
-
             {/* Price */}
             <div className="mb-3">
               <h5 className="text-muted">
-                PRICE: <span className="text-danger ms-2">₹2500 ₹1799</span>
+                PRICE:{" "}
+                <span className="text-danger ms-2">
+                  ₹{productPrice}{" "}
+                  <span className="text-decoration-line-through text-muted">
+                    ₹{productMrpPrice}
+                  </span>
+                </span>
               </h5>
             </div>
-
             {/* Size Selection */}
             <div className="mb-3">
-              <label className="form-label">LEHENGA SIZE (INCH)</label>
+              <label className="form-label">Size</label>
               <select
                 className="form-select"
                 value={selectedSize}
@@ -223,7 +137,6 @@ const ProductDetailPage = () => {
                 <option value="XL">Extra Large (44-46)</option>
               </select>
             </div>
-
             {/* Quantity */}
             <div className="mb-4">
               <label className="form-label">Quantity</label>
@@ -244,7 +157,6 @@ const ProductDetailPage = () => {
                 </button>
               </div>
             </div>
-
             {/* Action Buttons */}
             <div className="mb-4">
               <div className="d-flex gap-2">
@@ -259,7 +171,6 @@ const ProductDetailPage = () => {
                 </button>
               </div>
             </div>
-
             {/* Share Buttons */}
             <div>
               <span className="text-muted me-3">SHARE</span>
@@ -278,7 +189,6 @@ const ProductDetailPage = () => {
           </div>
         </div>
       </div>
-
       {/* Bottom Section */}
       <div className="row">
         {/* Top Selling Products - Left Column */}
@@ -288,53 +198,13 @@ const ProductDetailPage = () => {
               <h5 className="mb-0">Top Selling Products</h5>
             </div>
             <div className="card-body p-2">
-              {topSellingProducts.map((product) => (
-                <div
-                  key={product.id}
-                  className="d-flex align-items-center mb-3 p-2 border-bottom"
-                >
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="rounded me-2"
-                    style={{
-                      width: "60px",
-                      height: "60px",
-                      objectFit: "cover",
-                    }}
-                  />
-                  <div className="flex-grow-1">
-                    <div className="position-relative">
-                      <span className="badge bg-success position-absolute top-0 end-0 small">
-                        {product.discount}
-                      </span>
-                    </div>
-                    <h6 className="mb-1 small">{product.name}</h6>
-                    <div className="text-warning small mb-1">
-                      {"★"
-                        .repeat(5)
-                        .split("")
-                        .map((star, i) => (
-                          <span key={i} className="text-muted">
-                            ★
-                          </span>
-                        ))}
-                    </div>
-                    <div>
-                      <span className="text-muted text-decoration-line-through small">
-                        ₹{product.originalPrice}
-                      </span>
-                      <span className="text-danger fw-bold ms-1">
-                        ₹{product.salePrice}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              {/* You can fetch and display top selling products from your API here */}
+              <p className="text-center text-muted my-5">
+                Top selling products will be displayed here.
+              </p>
             </div>
           </div>
         </div>
-
         {/* Right Column */}
         <div className="col-md-9">
           {/* Hot Offers & Flash Sale Row */}
@@ -342,75 +212,15 @@ const ProductDetailPage = () => {
             <h4>Hot Offers</h4>
             <ScrollingGifBanner />
           </div>
-
           {/* Product Slider Section */}
           <div>
             <h4 className="mb-3">
               Suit, Tops, Legi, Jeans, Tshirt, western & Party wear
             </h4>
-
-            <div className="position-relative">
-              <div className="d-flex overflow-hidden">
-                <div
-                  className="d-flex transition-transform"
-                  style={{
-                    transform: `translateX(-${currentSlide * (100 / 4)}%)`,
-                    transition: "transform 0.3s ease",
-                  }}
-                >
-                  {productSlider.map((product) => (
-                    <div
-                      key={product.id}
-                      className="flex-shrink-0 px-2"
-                      style={{ width: "25%" }}
-                    >
-                      <div className="card h-100">
-                        <div className="position-relative">
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            className="card-img-top"
-                            style={{ height: "200px", objectFit: "cover" }}
-                          />
-                          <span className="badge bg-danger position-absolute top-0 start-0 m-2">
-                            {product.discount}
-                          </span>
-                        </div>
-                        <div className="card-body p-2">
-                          <div className="text-center mb-2">
-                            <span className="text-muted text-decoration-line-through small">
-                              ₹{product.originalPrice}
-                            </span>
-                            <span className="text-danger fw-bold ms-1">
-                              ₹{product.salePrice}
-                            </span>
-                          </div>
-                          <h6 className="card-title small text-center">
-                            {product.name}
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Navigation Buttons */}
-              <button
-                className="btn btn-primary position-absolute top-50 start-0 translate-middle-y"
-                onClick={prevSlide}
-                style={{ left: "-20px", zIndex: 10 }}
-              >
-                &#8249;
-              </button>
-              <button
-                className="btn btn-primary position-absolute top-50 end-0 translate-middle-y"
-                onClick={nextSlide}
-                style={{ right: "-20px", zIndex: 10 }}
-              >
-                &#8250;
-              </button>
-            </div>
+            {/* You can fetch and display related products from your API here */}
+            <p className="text-center text-muted my-5">
+              Related products will be displayed here.
+            </p>
           </div>
         </div>
       </div>
