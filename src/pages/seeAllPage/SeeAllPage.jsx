@@ -7,7 +7,7 @@ import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 // import logo from "../../assets/images/logo.png";
-import Categories from "../../components/catogeriesComponent/CatogeriesComponent"; // Import the Categories component
+import Categories from "../../components/catogeriesComponent/CatogeriesComponent";
 
 const SeeAllPage = () => {
   const { module_action } = useParams();
@@ -100,31 +100,31 @@ const SeeAllPage = () => {
 
   const handleSortChange = (e) => setSortOrder(e.target.value);
 
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-    const newUrl = new URL(window.location);
-    if (query.trim()) {
-      newUrl.searchParams.set("search", query);
-    } else {
-      newUrl.searchParams.delete("search");
-    }
-    window.history.pushState({}, "", newUrl);
-    if (window.searchTimeout) {
-      clearTimeout(window.searchTimeout);
-    }
-    window.searchTimeout = setTimeout(() => {
-      setSearchLoading(true);
-      const params = {
-        category_id: selectedCategories.length > 0 ? selectedCategories[0] : "",
-        search: query.trim() || "",
-        page_no: 1,
-        limit: 12,
-      };
-      dispatch(fetchGroceryData(params)).then(() => {
-        setSearchLoading(false);
-      });
-    }, 500);
-  };
+  // const handleSearch = (query) => {
+  //   setSearchQuery(query);
+  //   const newUrl = new URL(window.location);
+  //   if (query.trim()) {
+  //     newUrl.searchParams.set("search", query);
+  //   } else {
+  //     newUrl.searchParams.delete("search");
+  //   }
+  //   window.history.pushState({}, "", newUrl);
+  //   if (window.searchTimeout) {
+  //     clearTimeout(window.searchTimeout);
+  //   }
+  //   window.searchTimeout = setTimeout(() => {
+  //     setSearchLoading(true);
+  //     const params = {
+  //       category_id: selectedCategories.length > 0 ? selectedCategories[0] : "",
+  //       search: query.trim() || "",
+  //       page_no: 1,
+  //       limit: 12,
+  //     };
+  //     dispatch(fetchGroceryData(params)).then(() => {
+  //       setSearchLoading(false);
+  //     });
+  //   }, 500);
+  // };
 
   const handleClearSearch = () => {
     setSearchQuery("");
@@ -153,14 +153,14 @@ const SeeAllPage = () => {
   };
 
   const totalPages = Math.ceil(totalCount / 12);
-  console.log(
-    "totalCount:",
-    totalCount,
-    "totalPages:",
-    totalPages,
-    "pageNo:",
-    pageNo
-  );
+  // console.log(
+  //   "totalCount:",
+  //   totalCount,
+  //   "totalPages:",
+  //   totalPages,
+  //   "pageNo:",
+  //   pageNo
+  // );
 
   const getPageNumbers = (totalPages, currentPage, maxVisible = 5) => {
     const pageNumbers = [];
@@ -190,10 +190,10 @@ const SeeAllPage = () => {
   };
 
   const isDataLoading = loading || searchLoading;
+  console.log("currentPageItems:", currentPageItems);
 
   return (
     <div>
-    
       <div className="mt-2">
         <div className="container">
           <div className="row">
@@ -423,11 +423,7 @@ const SeeAllPage = () => {
                             </div>
                           )}
                           <Link
-                            to={{
-                              pathname: `/cartDetails/${encodeURIComponent(
-                                item.name
-                              )}/${item.grocery_id}`,
-                            }}
+                            to="/product"
                             state={{ product: item, pageNo }}
                             onClick={scrollToTop}
                             style={{
