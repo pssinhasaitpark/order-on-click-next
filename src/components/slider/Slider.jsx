@@ -1,30 +1,66 @@
 import ReusableSlider from "./ReusableSlider";
-import flashSaleProducts from "../../utils/flashSaleProducts.json";
-import electronicProducts from "../../utils/electronicProducts.json";
+import { fetchGroceryData } from "../../redux/slices/grocerySlice";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-// Main Component showing multiple sliders
+// Helper to shuffle array
+const shuffleArray = (array) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 const Slider = () => {
+  const dispatch = useDispatch();
+  const { data, loading } = useSelector((state) => state.grocery);
+
+  const [flashSale, setFlashSale] = useState([]);
+  const [electronics, setElectronics] = useState([]);
+  const [specialOffers, setSpecialOffers] = useState([]);
+
+  useEffect(() => {
+    const params = {
+      category_id: "",
+      search: "",
+      page_no: 1,
+      limit: 50,
+    };
+    dispatch(fetchGroceryData(params));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (data && Array.isArray(data.grocery)) {
+      const shuffled = shuffleArray(data.grocery);
+
+      setFlashSale(shuffled.slice(0, 6));
+      setElectronics(shuffleArray(shuffled).slice(6, 12));
+      setSpecialOffers(shuffleArray(shuffled).slice(12, 18));
+    }
+  }, [data]);
+
   return (
     <div className="hero-section">
-      {/* Flash Sale Slider */}
-
       <ReusableSlider
         title="Flash Sale"
-        products={flashSaleProducts}
+        products={flashSale}
+        loading={loading}
         sectionStyle={{ backgroundColor: "#f8f9fa" }}
       />
 
-      {/* Electronics Slider */}
       <ReusableSlider
         title="Electronics"
-        products={electronicProducts}
+        products={electronics}
+        loading={loading}
         sectionStyle={{ backgroundColor: "#fff" }}
       />
 
-      {/* Another Flash Sale with different styling */}
       <ReusableSlider
         title="Special Offers"
-        products={flashSaleProducts.slice(2, 5)}
+        products={specialOffers}
+        loading={loading}
         sectionStyle={{ backgroundColor: "#e3f2fd" }}
       />
     </div>
