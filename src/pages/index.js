@@ -4,4 +4,13 @@ import Home from "../pages/Home/index";
 import OrderStatus from "../components/Orders/OrderStatus";
 import LoginForm from "../components/LoginForm/LoginForm";
 import SeeAllPage from "./seeAllPage/SeeAllPage.jsx";
-export { Home, Cart, OrderStatus, LoginForm, FlashSaleProducts, SeeAllPage };
+import ProductDetailPage from "./productDetailsPage/ProductDetailsPage.jsx";
+export {
+  Home,
+  Cart,
+  ProductDetailPage,
+  OrderStatus,
+  LoginForm,
+  FlashSaleProducts,
+  SeeAllPage,
+};
