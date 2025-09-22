@@ -6,122 +6,8 @@ import { FaRegStar, FaStar, FaSearch, FaBars } from "react-icons/fa";
 import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import logo from "../../assets/images/logo.png";
-
-const HeaderSeeAll = ({
-  onShowFilter,
-  onSearch,
-  searchQuery,
-  onClearSearch,
-}) => {
-  const handleSearchChange = (e) => {
-    const query = e.target.value;
-    onSearch(query);
-  };
-  const handleClearSearch = () => {
-    onClearSearch();
-  };
-  return (
-    <nav
-      className="navbar navbar-expand-lg navbar-light bg-white"
-      style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}
-    >
-      <div className="container-fluid">
-        <div
-          className="d-flex align-items-center w-100"
-          style={{ minHeight: "60px" }}
-        >
-          <a
-            className="navbar-brand flex-shrink-0 me-2"
-            href="/"
-            style={{ minWidth: "auto" }}
-          >
-            <img
-              src={logo}
-              height="40"
-              className="d-inline-block align-top"
-              alt="Logo"
-            />
-          </a>
-          <form
-            className="flex-grow-1 position-relative mx-2"
-            style={{ minWidth: "150px", maxWidth: "calc(100% - 120px)" }}
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              className="form-control bg-light search-all w-100"
-              type="search"
-              placeholder="Search for anything"
-              aria-label="Search"
-              style={{
-                paddingRight: "45px",
-                fontSize: "14px",
-                height: "40px",
-                borderRadius: "28px",
-              }}
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                className="position-absolute btn btn-link text-decoration-none"
-                style={{ right: 40, top: "50%", transform: "translateY(-50%)" }}
-                onClick={handleClearSearch}
-              >
-                &times;
-              </button>
-            )}
-            <span
-              className="position-absolute search-bar"
-              style={{
-                right: 12,
-                top: "50%",
-                transform: "translateY(-50%)",
-                pointerEvents: "none",
-              }}
-            >
-              <FaSearch size={16} />
-            </span>
-          </form>
-          <div className="flex-shrink-0" style={{ minWidth: "50px" }}>
-            <button
-              className="btn d-lg-none p-2"
-              style={{
-                background: "transparent",
-                boxShadow: "none",
-                border: "none",
-                outline: "none",
-                fontSize: "24px",
-                color: "#111",
-                width: "44px",
-                height: "44px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              onClick={onShowFilter}
-              aria-label="Open Filters"
-            >
-              <FaBars />
-            </button>
-            <button
-              className="btn d-none d-lg-block px-3"
-              style={{
-                fontWeight: "800",
-                whiteSpace: "nowrap",
-                fontSize: "14px",
-              }}
-              type="button"
-            >
-              Get the app
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-};
+// import logo from "../../assets/images/logo.png";
+import Categories from "../../components/catogeriesComponent/CatogeriesComponent"; // Import the Categories component
 
 const SeeAllPage = () => {
   const { module_action } = useParams();
@@ -135,7 +21,7 @@ const SeeAllPage = () => {
   const [selectedStatus, setSelectedStatus] = useState("any");
   const [selectedCondition, setSelectedCondition] = useState("anyCondition");
   const [sortOrder, setSortOrder] = useState("default");
-  const [showFilter, setShowFilter] = useState(false);
+  const [showCategories, setShowCategories] = useState(false);
   const [searchQuery, setSearchQuery] = useState(urlSearchQuery);
   const [searchLoading, setSearchLoading] = useState(false);
   const { data, loading } = useSelector((state) => state.grocery);
@@ -212,23 +98,6 @@ const SeeAllPage = () => {
     searchQuery,
   ]);
 
-  const handleCategoryChange = (categoryName) => {
-    setSelectedCategories((prev) => {
-      if (prev[0] === categoryName) {
-        return [];
-      }
-      return [categoryName];
-    });
-  };
-
-  const handleStatusChange = (status) => {
-    setSelectedStatus(status);
-  };
-
-  const handleConditionChange = (condition) => {
-    setSelectedCondition(condition);
-  };
-
   const handleSortChange = (e) => setSortOrder(e.target.value);
 
   const handleSearch = (query) => {
@@ -278,7 +147,6 @@ const SeeAllPage = () => {
     console.log("Page clicked:", pageNumber, "Current pageNo:", pageNo);
     if (pageNumber >= 1 && pageNumber <= totalPages && pageNumber !== pageNo) {
       setPageNo(pageNumber);
-      // Dispatch API with the new page number
       fetchDataWithParams({ page_no: pageNumber });
       scrollToTop();
     }
@@ -321,123 +189,20 @@ const SeeAllPage = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const FilterContents = (
-    <div>
-      <h5 className="mb-3">Filter by</h5>
-      {searchQuery && (
-        <div className="mb-3 p-2 bg-light rounded">
-          <div className="d-flex justify-content-between align-items-center">
-            <small className="text-muted">
-              Searching for: <strong>"{searchQuery}"</strong>
-            </small>
-            <button
-              className="btn btn-sm btn-outline-secondary"
-              onClick={handleClearSearch}
-              style={{ fontSize: "0.7rem", padding: "2px 8px" }}
-            >
-              Clear
-            </button>
-          </div>
-        </div>
-      )}
-      <div className="mb-3">
-        <h6 className="mb-2">Category</h6>
-        {loading
-          ? Array.from({ length: 5 }).map((_, idx) => (
-              <div key={idx} className="mb-2">
-                <Skeleton height={20} width="80%" />
-              </div>
-            ))
-          : ["New & Antic Items, Latest Gadget & Modern Accessory"].map(
-              (cat) => (
-                <div key={cat} className="form-check mb-1">
-                  <input
-                    type="radio"
-                    className="form-check-input"
-                    id={`category-${cat}`}
-                    onChange={() => handleCategoryChange(cat)}
-                    checked={selectedCategories.includes(cat)}
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor={`category-${cat}`}
-                  >
-                    {cat}
-                  </label>
-                </div>
-              )
-            )}
-      </div>
-      <div className="mb-3">
-        <h6 className="mb-2">Status</h6>
-        {loading
-          ? Array.from({ length: 2 }).map((_, idx) => (
-              <div key={idx} className="mb-2">
-                <Skeleton height={20} width="60%" />
-              </div>
-            ))
-          : ["any", "available", "sold"].map((status) => (
-              <div className="form-check form-check-inline mb-1" key={status}>
-                <input
-                  type="radio"
-                  className="form-check-input"
-                  name="status"
-                  id={status}
-                  checked={selectedStatus === status}
-                  onChange={() => handleStatusChange(status)}
-                />
-                <label className="form-check-label" htmlFor={status}>
-                  {status.charAt(0).toUpperCase() + status.slice(1)}
-                </label>
-              </div>
-            ))}
-      </div>
-      <div className="mb-3">
-        <h6 className="mb-2">Condition</h6>
-        {loading
-          ? Array.from({ length: 5 }).map((_, idx) => (
-              <div key={idx} className="mb-2">
-                <Skeleton height={20} width="70%" />
-              </div>
-            ))
-          : ["anyCondition", "new", "like new", "good", "used"].map((cond) => (
-              <div className="form-check form-check-inline mb-1" key={cond}>
-                <input
-                  type="radio"
-                  className="form-check-input"
-                  name="condition"
-                  id={cond}
-                  checked={selectedCondition === cond}
-                  onChange={() => handleConditionChange(cond)}
-                />
-                <label className="form-check-label" htmlFor={cond}>
-                  {cond === "anyCondition"
-                    ? "Any"
-                    : cond
-                        .split(" ")
-                        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-                        .join(" ")}
-                </label>
-              </div>
-            ))}
-      </div>
-    </div>
-  );
-
   const isDataLoading = loading || searchLoading;
 
   return (
     <div>
-      <HeaderSeeAll
-        onShowFilter={() => setShowFilter(true)}
-        onSearch={handleSearch}
-        searchQuery={searchQuery}
-        onClearSearch={handleClearSearch}
-      />
+    
       <div className="mt-2">
         <div className="container">
           <div className="row">
-            <div className="d-none d-lg-block col-lg-3">{FilterContents}</div>
+            {/* Desktop Categories Sidebar */}
+            <div className="d-none d-lg-block col-lg-3">
+              <Categories />
+            </div>
+
+            {/* Mobile Categories Overlay */}
             <div
               style={{
                 position: "fixed",
@@ -446,11 +211,13 @@ const SeeAllPage = () => {
                 width: "100vw",
                 height: "100vh",
                 zIndex: 2000,
-                background: showFilter ? "rgba(0,0,0,0.25)" : "rgba(0,0,0,0)",
+                background: showCategories
+                  ? "rgba(0,0,0,0.25)"
+                  : "rgba(0,0,0,0)",
                 transition: "background 0.3s ease",
-                pointerEvents: showFilter ? "auto" : "none",
+                pointerEvents: showCategories ? "auto" : "none",
               }}
-              onClick={() => setShowFilter(false)}
+              onClick={() => setShowCategories(false)}
             >
               <div
                 style={{
@@ -465,19 +232,23 @@ const SeeAllPage = () => {
                   zIndex: 2100,
                   overflowY: "auto",
                   boxShadow: "2px 0 24px rgba(0,0,0,0.13)",
-                  transform: showFilter ? "translateX(0)" : "translateX(-100%)",
+                  transform: showCategories
+                    ? "translateX(0)"
+                    : "translateX(-100%)",
                   transition: "transform 0.3s ease",
                 }}
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
                   className="btn btn-close float-end mb-3"
-                  onClick={() => setShowFilter(false)}
-                  aria-label="Close Filters"
+                  onClick={() => setShowCategories(false)}
+                  aria-label="Close Categories"
                 />
-                {FilterContents}
+                <Categories />
               </div>
             </div>
+
+            {/* Main Content */}
             <div className="col-12 col-lg-9">
               <div
                 className="d-flex flex-wrap justify-content-between align-items-center mb-3 py-4"
