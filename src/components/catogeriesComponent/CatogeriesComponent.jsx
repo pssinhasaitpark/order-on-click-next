@@ -1,11 +1,17 @@
 // Categories.jsx
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchCategories } from "../../redux/slices/categorySlice";
 
 const Categories = () => {
+  const dispatch = useDispatch();
   const { categories, loading, error } = useSelector(
     (state) => state.categories
   );
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
   return (
     <div className="bg-light rounded h-100">
@@ -16,6 +22,7 @@ const Categories = () => {
         <h6 className="fw-bold mb-0 text-dark">Categories</h6>
         <small className="text-muted mx-3">See All &gt;</small>
       </div>
+
       <div className="category-list px-3">
         {loading ? (
           <div className="py-2 text-center">
@@ -28,14 +35,14 @@ const Categories = () => {
         ) : categories && categories.length > 0 ? (
           categories.map((category) => (
             <div
-              key={category.service_id}
+              key={category.category_id}
               className="category-item py-2 border-bottom border-light d-flex align-items-center"
             >
               {/* Category Image */}
               <div className="me-2 flex-shrink-0">
                 <img
-                  src={category.service_img}
-                  alt={category.service_name}
+                  src={`https://myelectrocare.com/electrocare/uploads/category/${category.category_image}`}
+                  alt={category.category_name}
                   className="rounded"
                   style={{
                     width: "24px",
@@ -47,10 +54,11 @@ const Categories = () => {
                   }}
                 />
               </div>
+
               {/* Category Name */}
               <small className="text-secondary d-flex align-items-center flex-grow-1">
                 <span className="me-2">&gt;</span>
-                {category.service_name}
+                {category.category_name}
               </small>
             </div>
           ))

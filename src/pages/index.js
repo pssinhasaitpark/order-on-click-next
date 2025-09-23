@@ -5,6 +5,7 @@ import OrderStatus from "../components/Orders/OrderStatus";
 import LoginForm from "../components/LoginForm/LoginForm";
 import SeeAllPage from "./seeAllPage/SeeAllPage.jsx";
 import ProductDetailPage from "./productDetailsPage/ProductDetailsPage.jsx";
+import RentalItemPage from "./rentalItem/RentalItemPage.jsx";
 export {
   Home,
   Cart,
@@ -13,4 +14,5 @@ export {
   LoginForm,
   FlashSaleProducts,
   SeeAllPage,
+  RentalItemPage,
 };

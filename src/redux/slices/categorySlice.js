@@ -1,5 +1,4 @@
 // src/redux/categorySlice.js
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -8,11 +7,11 @@ export const fetchCategories = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "https://myelectrocare.com/electrocare/index.php/User/serviceList"
+        "https://myelectrocare.com/electrocare/index.php/WebApp/fetchCategory"
       );
-      console.log(response.data);
+      console.log("Fetched categories:", response.data);
 
-      // Extract only the 'result' array
+      // API returns { status: 1, result: [...] }
       return response.data.result;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Something went wrong");
