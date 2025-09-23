@@ -153,14 +153,6 @@ const SeeAllPage = () => {
   };
 
   const totalPages = Math.ceil(totalCount / 12);
-  // console.log(
-  //   "totalCount:",
-  //   totalCount,
-  //   "totalPages:",
-  //   totalPages,
-  //   "pageNo:",
-  //   pageNo
-  // );
 
   const getPageNumbers = (totalPages, currentPage, maxVisible = 5) => {
     const pageNumbers = [];
