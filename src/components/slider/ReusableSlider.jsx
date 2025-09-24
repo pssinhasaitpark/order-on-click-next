@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const ReusableSlider = ({
   title,
   products,
+  type,
   loading = false,
   sectionStyle = {},
 }) => {
@@ -36,7 +37,7 @@ const ReusableSlider = ({
   };
 
   const handleViewMoreClick = () => {
-    navigate("/see-all");
+    navigate("/see-all", { state: { type } });
   };
 
   const visibleProducts = products.slice(
@@ -147,7 +148,6 @@ const ReusableSlider = ({
                 product?.prices?.[0]?.attribute ||
                 product?.grocery_price?.[0]?.attribute ||
                 "Default";
-
               return (
                 <div className="col" key={`${product.grocery_id}-${index}`}>
                   <div
@@ -162,15 +162,12 @@ const ReusableSlider = ({
                   >
                     <div
                       className="position-relative"
-                      style={{
-                        height: "200px",
-                        overflow: "hidden",
-                      }}
+                      style={{ height: "200px", overflow: "hidden" }}
                     >
                       <img
                         src={image}
                         className="card-img-top"
-                        alt={""}
+                        alt={title}
                         style={{
                           height: "100%",
                           width: "100%",
