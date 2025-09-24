@@ -1,10 +1,11 @@
-// Categories.jsx
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCategories } from "../../redux/slices/categorySlice";
+import { useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { categories, loading, error } = useSelector(
     (state) => state.categories
   );
@@ -12,6 +13,10 @@ const Categories = () => {
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
+
+  const handleCategoryClick = (categoryId) => {
+    navigate("/see-all", { state: { categoryId } });
+  };
 
   return (
     <div className="bg-light rounded h-100">
@@ -22,7 +27,6 @@ const Categories = () => {
         <h6 className="fw-bold mb-0 text-dark">Categories</h6>
         <small className="text-muted mx-3">See All &gt;</small>
       </div>
-
       <div className="category-list px-3">
         {loading ? (
           <div className="py-2 text-center">
@@ -37,8 +41,9 @@ const Categories = () => {
             <div
               key={category.category_id}
               className="category-item py-2 border-bottom border-light d-flex align-items-center"
+              onClick={() => handleCategoryClick(category.category_id)}
+              style={{ cursor: "pointer" }}
             >
-              {/* Category Image */}
               <div className="me-2 flex-shrink-0">
                 <img
                   src={`https://myelectrocare.com/electrocare/uploads/category/${category.category_image}`}
@@ -54,8 +59,6 @@ const Categories = () => {
                   }}
                 />
               </div>
-
-              {/* Category Name */}
               <small className="text-secondary d-flex align-items-center flex-grow-1">
                 <span className="me-2">&gt;</span>
                 {category.category_name}

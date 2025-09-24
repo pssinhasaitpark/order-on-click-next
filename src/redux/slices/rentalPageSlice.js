@@ -7,12 +7,12 @@ export const fetchRentalItems = createAsyncThunk(
   async ({ category_id, search, page_no, limit }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "https://myelectrocare.com/electrocare/index.php/User/rentalItemList",
+        "https://myelectrocare.com/electrocare/index.php/WebApp/fetchRentalItems",
         qs.stringify({
           category_id: category_id || "",
           search: search || "",
           page_no: page_no || 1,
-          limit: limit || 20, // Default to 20 items per page
+          limit: limit || 20,
         }),
         {
           headers: {
@@ -67,7 +67,6 @@ const rentalItemSlice = createSlice({
         if (!state.allPagesData[filterKey]) {
           state.allPagesData[filterKey] = {};
         }
-        // Store the result for the current page
         state.allPagesData[filterKey][action.payload.page_no] =
           action.payload.result || [];
       })

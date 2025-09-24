@@ -25,7 +25,7 @@ const RentalCatalog = () => {
           search: searchTerm,
           category_id: currentFilters.category_id,
           page_no: currentPage,
-          limit: 20, // Fetch 20 items per page
+          limit: 20,
         })
       );
     }
@@ -41,7 +41,7 @@ const RentalCatalog = () => {
   const handleSearchChange = (e) => {
     const newSearchTerm = e.target.value;
     setSearchTerm(newSearchTerm);
-    setCurrentPage(1); // Reset to first page on new search
+    setCurrentPage(1);
     dispatch(updateRentalFilters({ search: newSearchTerm }));
     dispatch(clearRentalPagesData());
   };
@@ -51,13 +51,14 @@ const RentalCatalog = () => {
     currentFilters.category_id || "no-category"
   }`;
   const currentPageData = allPagesData[filterKey]?.[currentPage] || [];
-  const totalItems = data.result ? data.result.length : 0;
-  const totalPages = Math.ceil(totalItems / 10); // 20 items per page
-  console.log("totalitems", totalItems);
+
   // Handle page change
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+
+  // Check if there is a next page (assuming API returns empty array if no more data)
+  const hasNextPage = currentPageData.length === 20;
 
   return (
     <div className="container-fluid bg-light mb-5">
@@ -153,51 +154,31 @@ const RentalCatalog = () => {
       </div>
 
       {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="container py-4">
-          <nav aria-label="Page navigation">
-            <ul className="pagination justify-content-center">
-              <li
-                className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+      <div className="container py-4">
+        <nav aria-label="Page navigation">
+          <ul className="pagination justify-content-center">
+            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+              <button
+                className="page-link"
+                onClick={() => handlePageChange(currentPage - 1)}
               >
-                <button
-                  className="page-link"
-                  onClick={() => handlePageChange(currentPage - 1)}
-                >
-                  Previous
-                </button>
-              </li>
-              {[...Array(totalPages)].map((_, i) => (
-                <li
-                  key={i}
-                  className={`page-item ${
-                    currentPage === i + 1 ? "active" : ""
-                  }`}
-                >
-                  <button
-                    className="page-link"
-                    onClick={() => handlePageChange(i + 1)}
-                  >
-                    {i + 1}
-                  </button>
-                </li>
-              ))}
-              <li
-                className={`page-item ${
-                  currentPage === totalPages ? "disabled" : ""
-                }`}
+                Previous
+              </button>
+            </li>
+            <li className="page-item active">
+              <button className="page-link">{currentPage}</button>
+            </li>
+            <li className={`page-item ${!hasNextPage ? "disabled" : ""}`}>
+              <button
+                className="page-link"
+                onClick={() => handlePageChange(currentPage + 1)}
               >
-                <button
-                  className="page-link"
-                  onClick={() => handlePageChange(currentPage + 1)}
-                >
-                  Next
-                </button>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      )}
+                Next
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
 
       {/* Footer spacing */}
       <div className="py-5"></div>

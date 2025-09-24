@@ -20,8 +20,8 @@ const Header = () => {
       <header>
         {/* Main Header */}
         <div className="bg-white border-bottom">
-          <div className="container">
-            <div className="d-flex align-items-center justify-content-between py-3">
+          <div className="">
+            <div className="d-flex align-items-center justify-content-evenly py-3">
               {/* Logo */}
               <div>
                 <img
@@ -49,7 +49,7 @@ const Header = () => {
               </div>
 
               {/* Right Menu */}
-              <div className="d-flex align-items-center gap-4">
+              <div className="d-flex align-items-center justify-content-around gap-4">
                 <Link
                   to="/order"
                   className="text-dark text-decoration-none d-flex align-items-center gap-1"
@@ -80,8 +80,9 @@ const Header = () => {
                   </span>
                 </div>
 
-                <div style={{ fontSize: "18px", cursor: "pointer" }}>
+                <div style={{ fontSize: "14px", cursor: "pointer" }}>
                   <i className="fas fa-bell"></i>
+                  <span>Notifications</span>
                 </div>
               </div>
             </div>
