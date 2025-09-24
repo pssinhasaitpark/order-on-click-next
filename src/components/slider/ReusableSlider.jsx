@@ -170,7 +170,7 @@ const ReusableSlider = ({
                       <img
                         src={image}
                         className="card-img-top"
-                        alt={title}
+                        alt={""}
                         style={{
                           height: "100%",
                           width: "100%",
