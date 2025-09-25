@@ -134,7 +134,7 @@ const ReusableSlider = ({
               const image =
                 product?.images?.[0]?.image_file ||
                 product?.grocery_image?.[0]?.image_file ||
-                "https://via.placeholder.com/200";
+                null;
               const title = product?.name || "No Name";
               const originalPrice =
                 product?.prices?.[0]?.mrp_price ||
@@ -161,19 +161,32 @@ const ReusableSlider = ({
                     }}
                   >
                     <div
-                      className="position-relative"
-                      style={{ height: "200px", overflow: "hidden" }}
+                      className="  position-relative d-flex align-items-center justify-content-center"
+                      style={{
+                        height: "200px",
+                        overflow: "hidden",
+                        backgroundColor: "#f8f9fa",
+                      }}
                     >
-                      <img
-                        src={image}
-                        className="card-img-top"
-                        alt={title}
-                        style={{
-                          height: "100%",
-                          width: "100%",
-                          objectFit: "contain",
-                        }}
-                      />
+                      {image ? (
+                        <img
+                          src={image}
+                          className="card-img-top mt-5 p-lg-5 p-0"
+                          alt={title || "Product Image"}
+                          style={{
+                            height: "100%",
+                            width: "100%",
+                            objectFit: "contain",
+                          }}
+                        />
+                      ) : (
+                        <div
+                          className="d-flex flex-column align-items-center justify-content-center h-100 w-100"
+                          style={{ color: "#6c757d" }}
+                        >
+                          <small>No Image</small>
+                        </div>
+                      )}
                       <span
                         className="position-absolute top-0 start-0 m-2 badge text-white px-2 py-1"
                         style={{

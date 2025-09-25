@@ -30,6 +30,8 @@ export const fetchProductsByType = createAsyncThunk(
   }
 );
 
+
+
 const seeAllSlice = createSlice({
   name: "seeAll",
   initialState: {
