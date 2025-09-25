@@ -15,7 +15,7 @@ const Categories = () => {
   }, [dispatch]);
 
   const handleCategoryClick = (categoryId) => {
-    navigate("/see-all", { state: { categoryId } });
+    navigate(`/seeall/category?categoryId=${categoryId}`);
   };
 
   return (

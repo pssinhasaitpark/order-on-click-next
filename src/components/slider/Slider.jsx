@@ -36,10 +36,10 @@
 // export default Slider;
 
 // src/components/Slider/Slider.jsx
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ReusableSlider from "./ReusableSlider";
 import { fetchHomeData } from "../../redux/slices/homeSlice";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 const Slider = () => {
   const dispatch = useDispatch();
