@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const ReusableSlider = ({
   title,
@@ -7,6 +7,7 @@ const ReusableSlider = ({
   type,
   loading = false,
   sectionStyle = {},
+  pageNo = 1,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
@@ -37,7 +38,7 @@ const ReusableSlider = ({
   };
 
   const handleViewMoreClick = () => {
-    navigate("/see-all", { state: { type } });
+    navigate("/see-all", { state: { type, pageNo } });
   };
 
   const visibleProducts = products.slice(
@@ -148,99 +149,157 @@ const ReusableSlider = ({
                 product?.prices?.[0]?.attribute ||
                 product?.grocery_price?.[0]?.attribute ||
                 "Default";
+
               return (
                 <div className="col" key={`${product.grocery_id}-${index}`}>
-                  <div
-                    className="card h-100 shadow-sm border-0"
-                    style={{
-                      borderRadius: "12px",
-                      overflow: "hidden",
-                      display: "flex",
-                      flexDirection: "column",
-                      height: "100%",
-                    }}
+                  <Link
+                    to="/product"
+                    state={{ product, pageNo }}
+                    className="text-decoration-none"
                   >
                     <div
-                      className="  position-relative d-flex align-items-center justify-content-center"
+                      className="card h-100 shadow-sm border-0"
                       style={{
-                        height: "200px",
+                        borderRadius: "12px",
                         overflow: "hidden",
-                        backgroundColor: "#f8f9fa",
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "100%",
                       }}
                     >
-                      {image ? (
-                        <img
-                          src={image}
-                          className="card-img-top mt-5 p-lg-5 p-0"
-                          alt={title || "Product Image"}
-                          style={{
-                            height: "100%",
-                            width: "100%",
-                            objectFit: "contain",
-                          }}
-                        />
-                      ) : (
-                        <div
-                          className="d-flex flex-column align-items-center justify-content-center h-100 w-100"
-                          style={{ color: "#6c757d" }}
-                        >
-                          <small>No Image</small>
-                        </div>
-                      )}
-                      <span
-                        className="position-absolute top-0 start-0 m-2 badge text-white px-2 py-1"
+                      <div
+                        className="position-relative d-flex align-items-center justify-content-center"
                         style={{
-                          backgroundColor: "#28a745",
-                          fontSize: "10px",
-                          fontWeight: "bold",
+                          height: "200px",
+                          overflow: "hidden",
+                          backgroundColor: "#f8f9fa",
                         }}
                       >
-                        {discount}% OFF
-                      </span>
-                    </div>
-                    <div
-                      className="card-body p-3 d-flex flex-column"
-                      style={{ flexGrow: 1 }}
-                    >
-                      <div className="d-flex align-items-center mb-2">
+                        {image ? (
+                          <img
+                            src={image}
+                            className="card-img-top mt-5"
+                            alt={title || "Product Image"}
+                            style={{
+                              height: "100%",
+                              width: "100%",
+                              objectFit: "contain",
+                            }}
+                            onError={(e) => {
+                              e.target.style.display = "none";
+                              e.target.parentElement.innerHTML = `
+                                <div class="d-flex flex-column align-items-center justify-content-center h-100 w-100 text-center" style="color: #6c757d; padding: 10px;">
+                                  <div class="mb-2">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                                      <polyline points="21,15 16,10 5,21"/>
+                                    </svg>
+                                  </div>
+                                  <div style="font-size: 12px; font-weight: 500;">No Image</div>
+                                  <div style="font-size: 10px; color: #999; margin-top: 4px; word-break: break-word; line-height: 1.2;">${title}</div>
+                                </div>
+                              `;
+                            }}
+                          />
+                        ) : (
+                          <div
+                            className="d-flex flex-column align-items-center justify-content-center h-100 w-100 text-center"
+                            style={{ color: "#6c757d", padding: "10px" }}
+                          >
+                            <div className="mb-2">
+                              <svg
+                                width="40"
+                                height="40"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <rect
+                                  x="3"
+                                  y="3"
+                                  width="18"
+                                  height="18"
+                                  rx="2"
+                                  ry="2"
+                                />
+                                <circle cx="8.5" cy="8.5" r="1.5" />
+                                <polyline points="21,15 16,10 5,21" />
+                              </svg>
+                            </div>
+                            <div
+                              style={{ fontSize: "12px", fontWeight: "500" }}
+                            >
+                              No Image
+                            </div>
+                            <div
+                              style={{
+                                fontSize: "10px",
+                                color: "#999",
+                                marginTop: "4px",
+                                wordBreak: "break-word",
+                                lineHeight: "1.2",
+                              }}
+                            >
+                              {title}
+                            </div>
+                          </div>
+                        )}
                         <span
-                          className="text-muted text-decoration-line-through me-2"
-                          style={{ fontSize: "12px" }}
+                          className="position-absolute top-0 start-0 m-2 badge text-white px-2 py-1"
+                          style={{
+                            backgroundColor: "#28a745",
+                            fontSize: "10px",
+                            fontWeight: "bold",
+                          }}
                         >
-                          ₹{originalPrice}
-                        </span>
-                        <span
-                          className="fw-bold text-danger"
-                          style={{ fontSize: "16px" }}
-                        >
-                          ₹
-                          {Math.round(
-                            originalPrice - (originalPrice * discount) / 100
-                          )}
+                          {discount}% OFF
                         </span>
                       </div>
-                      <h6
-                        className="card-title mb-2"
-                        style={{
-                          fontSize: "14px",
-                          lineHeight: "1.3",
-                          minHeight: "40px",
-                          overflow: "hidden",
-                          display: "-webkit-box",
-                          WebkitLineClamp: 2,
-                          WebkitBoxOrient: "vertical",
-                        }}
+                      <div
+                        className="card-body p-3 d-flex flex-column"
+                        style={{ flexGrow: 1 }}
                       >
-                        {title}
-                      </h6>
-                      <span
-                        className="badge bg-light text-dark mt-auto"
-                        style={{ fontSize: "10px" }}
-                      >
-                        {variant}
-                      </span>
+                        <div className="d-flex align-items-center mb-2">
+                          <span
+                            className="text-muted text-decoration-line-through me-2"
+                            style={{ fontSize: "12px" }}
+                          >
+                            ₹{originalPrice}
+                          </span>
+                          <span
+                            className="fw-bold text-success"
+                            style={{ fontSize: "16px" }}
+                          >
+                            ₹{Math.round(originalPrice - discount)}
+                          </span>
+                        </div>
+                        <h6
+                          className="card-title mb-2"
+                          style={{
+                            fontSize: "14px",
+                            lineHeight: "1.3",
+                            minHeight: "40px",
+                            overflow: "hidden",
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                          }}
+                        >
+                          {title}
+                        </h6>
+                        <span
+                          className="badge bg-light text-dark mt-auto"
+                          style={{ fontSize: "10px" }}
+                        >
+                          {variant}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               );
             })}

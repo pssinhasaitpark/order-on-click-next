@@ -57,6 +57,7 @@ const Slider = () => {
         title="Flash Sale"
         type="flashSale"
         products={flashSale}
+        pageNo={1}
         loading={loading}
         sectionStyle={{ backgroundColor: "#f8f9fa" }}
       />
@@ -64,6 +65,7 @@ const Slider = () => {
         title="Best Selling"
         type="bestSelling"
         products={bestSelling}
+        pageNo={1}
         loading={loading}
         sectionStyle={{ backgroundColor: "#e3f2fd" }}
       />
