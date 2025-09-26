@@ -142,9 +142,8 @@ const SeeAllPage = () => {
   return (
     <div className="mt-2">
       {/* Banner Section */}
-      <div className="hero-section d-flex justify-content-center mx-auto px-3 px-md-0">
+      {/* <div className="hero-section d-flex justify-content-center mx-auto px-3 px-md-0">
         <div className="row g-3 w-100">
-          {/* Main Banner Area */}
           <div className="col-12">
             <div className="position-relative">
               <div className="banner-container position-relative overflow-hidden rounded">
@@ -208,7 +207,7 @@ const SeeAllPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Product Grid */}
       <div className="container mt-4">
@@ -267,16 +266,16 @@ const SeeAllPage = () => {
                         <Card.Text className="text-muted mb-2">
                           {item.category_name}
                         </Card.Text>
-                        <div className="d-flex align-items-center mb-2">
-                          <span className="fw-bolder text-success me-2">
+                        <div className="d-flex align-items-center  mb-2">
+                          <span>
+                            <strike className="text-muted me-2">
+                              ₹{item.prices?.[0]?.mrp_price}
+                            </strike>
+                          </span>
+                          <span className="fw-bolder text-success ">
                             ₹
                             {item.prices?.[0]?.discount ||
                               item.prices?.[0]?.mrp_price}
-                          </span>
-                          <span>
-                            <strike className="text-muted">
-                              ₹{item.prices?.[0]?.mrp_price}
-                            </strike>
                           </span>
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
