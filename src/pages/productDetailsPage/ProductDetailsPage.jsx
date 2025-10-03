@@ -1,7 +1,7 @@
-
 import React, { useState } from "react";
 import ScrollingGifBanner from "../../components/ScrollingGifBanner/ScrollingGifBanner";
 import { useLocation, useNavigate } from "react-router-dom";
+import RelatedProductsSlider from "../../components/relatedProductSlider/RelatedProductSlider";
 
 const ProductDetailPage = () => {
   const location = useLocation();
@@ -95,7 +95,7 @@ const ProductDetailPage = () => {
         <div className="col-md-6">
           <div className="ps-4">
             {/* Product Title */}
-            <div className="bg-primary text-white p-2 rounded mb-3">
+            <div className="text-black p-2 rounded mb-3">
               <h4 className="mb-0">{productName}</h4>
             </div>
             {/* Rating */}
@@ -201,7 +201,6 @@ const ProductDetailPage = () => {
               <h5 className="mb-0">Top Selling Products</h5>
             </div>
             <div className="card-body p-2">
-              {/* You can fetch and display top selling products from your API here */}
               <p className="text-center text-muted my-5">
                 Top selling products will be displayed here.
               </p>
@@ -210,21 +209,15 @@ const ProductDetailPage = () => {
         </div>
         {/* Right Column */}
         <div className="col-md-9">
-          {/* Hot Offers & Flash Sale Row */}
+          {/* Hot Offers & Flash Sale Row */} 
           <div className="row mb-4">
             <h4>Hot Offers</h4>
             <ScrollingGifBanner />
           </div>
           {/* Product Slider Section */}
-          <div>
-            <h4 className="mb-3">
-              Suit, Tops, Legi, Jeans, Tshirt, western & Party wear
-            </h4>
-            {/* You can fetch and display related products from your API here */}
-            <p className="text-center text-muted my-5">
-              Related products will be displayed here.
-            </p>
-          </div>
+            <div className="mt-4">
+        <RelatedProductsSlider categoryId={product.category_id} />
+      </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,9 @@
+// src/pages/Home/BannerSection.js
 import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../redux/slices/categorySlice";
 import { fetchRentalItems } from "../../redux/slices/rentalItemListSlice";
+import { fetchHomeBanners } from "../../redux/slices/homeBannerSlice";
 import { Delivery, Rent } from "../../assets";
 import { TiArrowSortedDown } from "react-icons/ti";
 import "./Home.css";
@@ -13,42 +15,45 @@ const BannerSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const dispatch = useDispatch();
 
+  // Fetch banners from Redux
+  const { banners, loading, error } = useSelector((state) => state.homeBanner);
+
+  // Fetch rental items for the sidebar
   const rentalItems = useSelector((state) => {
     const filterKey = `no-search_no-category`;
     return state.rental?.allPagesData?.[filterKey]?.[1] || [];
   });
 
+  // Fetch data on component mount
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchRentalItems({ page_no: 1, limit: 10 }));
+    dispatch(fetchHomeBanners());
   }, [dispatch]);
 
+  // Auto-advance slider
+  useEffect(() => {
+    if (banners.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % banners.length);
+      }, 4000);
+      return () => clearInterval(interval);
+    }
+  }, [banners.length]);
+
+  // Shuffle and select random rental items for the sidebar
   const randomRentalItems = useMemo(() => {
     const shuffled = [...rentalItems].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, 4);
   }, [rentalItems]);
 
-  const banners = [
-    {
-      id: 1,
-      image:
-        "https://orderonclick.com/admin/images/slider/order%20on%20click%20Banner_flash%20sell.gif",
-      alt: "Flash Sale Banner",
-    },
-    {
-      id: 2,
-      image:
-        "https://orderonclick.com/admin/images/slider/order%20on%20click%20Banner_promode.gif",
-      alt: "Pro Mode Banner",
-    },
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % banners.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [banners.length]);
+  // Show loading/error states
+  if (loading)
+    return <div className="text-center my-5">Loading banners...</div>;
+  if (error)
+    return <div className="text-center my-5 text-danger">Error: {error}</div>;
+  if (banners.length === 0)
+    return <div className="text-center my-5">No banners available</div>;
 
   return (
     <>
@@ -74,8 +79,8 @@ const BannerSection = () => {
                   {banners.map((banner) => (
                     <div key={banner.id} className="w-100 flex-shrink-0">
                       <img
-                        src={banner.image}
-                        alt={banner.alt}
+                        src={encodeURI(banner.image)}
+                        alt={`Banner ${banner.id}`}
                         className="img-fluid w-100"
                         style={{ height: "400px", objectFit: "cover" }}
                       />
@@ -251,7 +256,7 @@ const BannerSection = () => {
               {/* Scrollable Items */}
               <div
                 className="overflow-auto p-3 flex-grow-1"
-                style={{ maxHeight: "500px" }}
+                style={{ maxHeight: "500px"  }}
               >
                 {randomRentalItems.length > 0 ? (
                   randomRentalItems.map((item) => (
