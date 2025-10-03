@@ -8,6 +8,7 @@ import rentalItemReducer from "./slices/rentalPageSlice.js";
 import videoReducer from "./slices/videoSlice.js";
 import homeReducer from "./slices/homeSlice.js";
 import seeAllSlice from "./slices/seeAllSlice.js";
+import homeBannerReducer from "./slices/homeBannerSlice.js";
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     rentalPage: rentalItemReducer,
     videos: videoReducer,
     home: homeReducer,
+    homeBanner: homeBannerReducer,
     seeAll: seeAllSlice,
   },
 });
